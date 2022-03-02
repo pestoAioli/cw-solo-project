@@ -1,0 +1,30 @@
+{
+  "name": "tourns-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc --watch --preserveWatchOutput",
+    "start": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adriamcassorla/cw-solo-project.git"
+  },
+  "author": "Adrià M. Cassorla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adriamcassorla/cw-solo-project/issues"
+  },
+  "homepage": "https://github.com/adriamcassorla/cw-solo-project#readme",
+  "dependencies": {
+    "apollo-server-core": "^3.6.2",
+    "apollo-server-express": "^3.6.2",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "graphql": "^16.3.0",
+    "path": "^0.12.7",
+    "request-promise-native": "^1.0.9"
+  }
+}
