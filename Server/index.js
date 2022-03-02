@@ -10,8 +10,10 @@ app.use(cors());
 
 const PORT = +process.env.PORT || 3001;
 
+const path = require('path');
 const fs = require('fs');
-const typeDefs = require('./GraphQL/typeDefs');
+const typePath = path.join(__dirname, '/GraphQL/typeDefs.graphql');
+const typeDefs = fs.readFileSync(typePath, 'utf-8');
 const resolvers = require('./GraphQL/resolvers');
 
 const server = new ApolloServer({ typeDefs, resolvers });
