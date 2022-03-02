@@ -24,15 +24,15 @@ const main = async () => {
     playground: true,
     introspection: true,
   });
+  await server.start();
+  server.applyMiddleware({ path: "graphql", app });
+  console.log(`Apollo Server running at http://localhost:${PORT}/graphql 🚀`);
   
   try {
     mongoose.connect(process.env.DB_URI, () => {
       console.log('Connected to Mongo Atlas! 🍃');
       app.listen(PORT, async () => {
         try {
-          await server.start();
-          server.applyMiddleware({ path: "graphql", app });
-          console.log(`Apollo Server running at http://localhost:${PORT}/graphql 🚀`);
         } catch (e) {
           console.error('Wrong server connection', e);
         }
