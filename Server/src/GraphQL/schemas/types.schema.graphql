@@ -34,14 +34,3 @@ type Section {
   sectionType: String!
   travelMode: String!
 }
-
-# Inputs
-input dirInput {
-  start: [Float!]!
-  end: [Float!]!
-}
-
-# Queries:
-type Query {
-  getDirections(input: dirInput!): Directions!
-}

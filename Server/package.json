@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/adriamcassorla/cw-solo-project#readme",
   "dependencies": {
+    "apollo-server": "^3.6.3",
     "apollo-server-core": "^3.6.2",
     "apollo-server-express": "^3.6.2",
     "dotenv": "^16.0.0",

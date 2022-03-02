@@ -1,0 +1,9 @@
+# Inputs
+input dirInput {
+  start: [Float!]!
+  end: [Float!]!
+}
+
+type Query {
+  getDirections(input: dirInput!): Directions!
+}
