@@ -1,4 +1,4 @@
-type Directions {
+module.exports = `type Directions {
   formatVersion: String!
   routes: [Route!]
 }
@@ -45,3 +45,4 @@ input dirInput {
 type Query {
   getDirections(input: dirInput!): Directions!
 }
+`;
