@@ -23,7 +23,7 @@ try {
     try {
       await server.start();
       server.applyMiddleware({ app });
-      console.log(`Server running at http://localhost:${PORT}/graphql 🚀`);
+      console.log(`Apollo Server running at http://localhost:${PORT}/graphql 🚀`);
     } catch (e) {
       console.error('Wrong server connection', e);
     }

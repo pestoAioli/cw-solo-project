@@ -28,5 +28,7 @@ const eventSchema = new mongoose.Schema({
   }
 });
 
+
+
 const Locations = mongoose.model('Locations', eventSchema);
 module.exports = Locations;
