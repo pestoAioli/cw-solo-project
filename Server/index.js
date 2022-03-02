@@ -28,19 +28,19 @@ const main = async () => {
   server.applyMiddleware({ path: "graphql", app });
   console.log(`Apollo Server running at http://localhost:${PORT}/graphql 🚀`);
   
-  try {
-    mongoose.connect(process.env.DB_URI, () => {
-      console.log('Connected to Mongo Atlas! 🍃');
-      app.listen(PORT, async () => {
-        try {
-        } catch (e) {
-          console.error('Wrong server connection', e);
-        }
-      });
-    });
-  } catch (e) {
-    console.error('Wrong connection to Locations DB', e);
-  }
+  // try {
+  //   mongoose.connect(process.env.DB_URI, () => {
+  //     console.log('Connected to Mongo Atlas! 🍃');
+  //     app.listen(PORT, async () => {
+  //       try {
+  //       } catch (e) {
+  //         console.error('Wrong server connection', e);
+  //       }
+  //     });
+  //   });
+  // } catch (e) {
+  //   console.error('Wrong connection to Locations DB', e);
+  // }
 };
 
 module.exports = main;
