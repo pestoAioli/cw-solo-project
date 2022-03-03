@@ -14,6 +14,11 @@ export default StyleSheet.create({
     height: tabBarHeight,
     borderTopLeftRadius: tabBarHeight / 2,
     borderTopRightRadius: tabBarHeight / 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
   },
   tabBarItem: {
     justifyContent: 'center',
@@ -24,5 +29,14 @@ export default StyleSheet.create({
     marginTop: windowWidth / 36,
     height: windowWidth / 6,
     borderRadius: windowWidth / 6,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+
+    elevation: 3,
   },
 });

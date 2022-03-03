@@ -2,6 +2,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import * as col from './Styles/Colours';
 
 const Tab = createBottomTabNavigator();
@@ -50,10 +51,10 @@ function App() {
                 size={size * 1.8}
               />
             ),
-            // tabBarItemStyle: {
-            //   ...styles.tabBarItem,
-            //   backgroundColor: col.interactive,
-            // },
+            tabBarItemStyle: {
+              ...styles.tabBarItem,
+              backgroundColor: col.interactive,
+            },
           }}
         />
         <Tab.Screen

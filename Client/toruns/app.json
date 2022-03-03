@@ -13,11 +13,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.adriamcassorla.toruns",
+      "config": {
+        "googleMapsApiKey": "AIzaSyBT8Vp-7bhPYgDW-eAgoArCc6OoDpxBoBQ"
+      }
     },
     "android": {
       "adaptiveIcon": {
