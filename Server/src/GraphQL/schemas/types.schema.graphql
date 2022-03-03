@@ -1,3 +1,4 @@
+# Routes (TomTom API Response)
 type Directions {
   formatVersion: String!
   routes: [Route!]
@@ -7,6 +8,7 @@ type Route {
   summary: Summary
   legs: [Legs]!
   sections: [Section]
+  guidance: [Guidance]
 }
 
 type Summary {
@@ -33,4 +35,47 @@ type Section {
   endPointIndex: Int!
   sectionType: String!
   travelMode: String!
+}
+
+type Guidance {
+  instructions: [Instruction]
+  instructionGroups: [InstructionGroup]
+}
+
+type Instruction {
+  routeOffsetInMeters: Int!
+  travelTimeInSeconds: Int!
+  point: Point!
+  pointIndex: Int!
+  instructionType: String!
+  roadNumbers: [String]
+  exitNumber: String
+  street: String
+  signpostText: String
+  countryCode: String
+  stateCode: String
+  junctionType: String
+  turnAngleInDecimalDegrees: Int
+  roundaboutExitNumber: Int
+  possibleCombineWithNext: Boolean
+  drivingSide: String
+  maneuver: String
+  message: String
+  combinedMessage: String
+}
+
+type InstructionGroup {
+  firstInstructionIndex: Int
+  lastInstructionIndex: Int
+  groupMessage: String
+  groupLengthInMeters: Int
+}
+
+# Mongo DB
+type location {
+  name: String!
+  coordinates: [Float!]!
+  altitude: Int!
+  description: String!
+  tags: [String!]!
 }

@@ -6,7 +6,7 @@ const query = require("./query.resolver");
 
 const resolvers = {
   Query: {
-    getDirections: query.getDirections,
+    getLocation: query.getLocation,
   },
 };
 

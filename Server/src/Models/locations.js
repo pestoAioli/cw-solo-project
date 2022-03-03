@@ -1,14 +1,17 @@
 // @ts-nocheck
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const eventSchema = new mongoose.Schema({
-  coordinates: [Number],
-  altitude: Number,
+const locationsSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
     unique: true,
   },
+  coordinates: {
+    type: [Number],
+    required: true,
+  },
+  altitude: Number,
   description: {
     type: String,
     required: true,
@@ -17,18 +20,6 @@ const eventSchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
-  discovered_by: {
-    type: [ObjectId]
-  },
-  first_descovered: {
-    type: [ObjectId]
-  },
-  comments: {
-    comment: [ObjectId]
-  }
 });
 
-
-
-const Locations = mongoose.model('Locations', eventSchema);
-module.exports = Locations;
+module.exports = locationsSchema;

@@ -1,9 +1,16 @@
 # Inputs
 input dirInput {
   start: [Float!]!
-  end: [Float!]!
+  range: Int!
+  filters: [String]
+  type: String!
+}
+
+type LocationResp {
+  id: String!
+  route: Directions!
 }
 
 type Query {
-  getDirections(input: dirInput!): Directions!
+  getLocation(input: dirInput!): LocationResp!
 }

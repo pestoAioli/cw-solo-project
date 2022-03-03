@@ -1,10 +1,9 @@
 // @ts-nocheck
+"use strict";
 require("dotenv").config();
 
 const server = require("./GraphQL");
-const mongoose = require("mongoose");
-
-const PORT = +process.env.PORT || 5050;
+const { mongoose } = require("./Models");
 
 try {
   mongoose.connect(process.env.DB_URI, () => {
