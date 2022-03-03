@@ -8,7 +8,7 @@ type Route {
   summary: Summary
   legs: [Legs]!
   sections: [Section]
-  guidance: [Guidance]
+  guidance: Guidance
 }
 
 type Summary {

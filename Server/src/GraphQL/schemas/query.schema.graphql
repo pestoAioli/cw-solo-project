@@ -1,6 +1,6 @@
 # Inputs
 input dirInput {
-  start: [Float!]!
+  origin: [Float!]!
   range: Int!
   filters: [String]
   type: String!
