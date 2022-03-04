@@ -18,15 +18,14 @@ const SelectionMap = () => {
     getCurrentLocation().then((loc) => {
       setOrigin([loc.coords.latitude, loc.coords.longitude]);
       setRegion({
-        latitudeDelta: 0.5,
-        longitudeDelta: 0.5,
+        latitudeDelta: 0.8,
+        longitudeDelta: 0.8,
         latitude: loc.coords.latitude,
         longitude: loc.coords.longitude,
       });
     });
   }, []);
 
-  let currentRegion = region;
   const onRegionChange = (newRegion) => {
     const { longitudeDelta, latitudeDelta } = newRegion;
     setRegion({
@@ -39,7 +38,7 @@ const SelectionMap = () => {
   return region ? (
     <MapView
       style={styles.map}
-      region={currentRegion}
+      region={region}
       customMapStyle={MapStyle}
       provider={PROVIDER_GOOGLE}
       showsUserLocation={true}

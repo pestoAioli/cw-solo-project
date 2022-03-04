@@ -1,10 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import RouteRangeContext from './../Context/context';
 
 const Navigation = ({ navigation }) => {
-  const { origin, range } = useContext(RouteRangeContext);
+  const { origin, range, preferences } = useContext(RouteRangeContext);
+
+  useEffect(() => {
+    const routeParams = {
+      origin,
+      range,
+      ...preferences,
+    };
+    console.log(routeParams);
+  }, [preferences]);
 
   return (
     <View>

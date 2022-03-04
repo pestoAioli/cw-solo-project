@@ -6,11 +6,14 @@ import MainHeader from '../Components/MainHeader';
 import RangeSlider from '../Components/RangeSlider';
 import Preferences from './Preferences';
 
-const RangeSelection = ({ rangeSelected }) => {
+const RangeSelection = ({ rangeSelected, setRangeSelected, navigation }) => {
   return (
     <View style={styles.container}>
       <Modal animationType="fade" transparent={true} visible={rangeSelected}>
-        <Preferences />
+        <Preferences
+          setRangeSelected={setRangeSelected}
+          navigation={navigation}
+        />
       </Modal>
       <MainHeader />
       <SelectionMap />

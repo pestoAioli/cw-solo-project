@@ -16,14 +16,17 @@ import RouteRangeContext from './Context/context';
 const Tab = createBottomTabNavigator();
 
 function App() {
-  const [range, setRange] = useState(100);
+  const [range, setRange] = useState(25);
   const [origin, setOrigin] = useState(null);
+  const [preferences, setPreferences] = useState({ filters: [], type: '' });
   const [rangeSelected, setRangeSelected] = useState(false);
   const routeRange = {
     range,
     setRange,
     origin,
     setOrigin,
+    preferences,
+    setPreferences,
   };
   return (
     <RouteRangeContext.Provider value={routeRange}>
@@ -41,7 +44,6 @@ function App() {
         >
           <Tab.Screen
             name="Home"
-            children={() => <RangeSelection rangeSelected={rangeSelected} />}
             options={{
               tabBarIcon: ({ color, size }) => (
                 <MaterialCommunityIcons
@@ -51,7 +53,15 @@ function App() {
                 />
               ),
             }}
-          />
+          >
+            {(props) => (
+              <RangeSelection
+                {...props}
+                rangeSelected={rangeSelected}
+                setRangeSelected={setRangeSelected}
+              />
+            )}
+          </Tab.Screen>
           <Tab.Screen
             name="Nav"
             component={Navigation}

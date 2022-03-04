@@ -19,7 +19,7 @@ const RangeSlider = () => {
         onValueChange={handleSliderChange}
         maximumValue={300}
         minimumValue={20}
-        step={5}
+        step={5000}
         allowTouchTrack
         trackStyle={{
           height: 10,
