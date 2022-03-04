@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View, Modal } from 'react-native';
+import React from 'react';
+import { BlurView } from 'expo-blur';
 
 const Preferences = () => {
   return (
@@ -11,4 +12,9 @@ const Preferences = () => {
 
 export default Preferences;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'blue',
+  },
+});

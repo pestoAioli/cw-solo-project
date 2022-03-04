@@ -1,5 +1,6 @@
 export const accent = '#98B66E';
 export const accentLight = '#C5E5A5';
+export const accentLightTrans = 'rgba(197, 229, 165, 0.2)';
 
 export const interactive = '#F9D876';
 export const interactiveLight = '#FBE39D';

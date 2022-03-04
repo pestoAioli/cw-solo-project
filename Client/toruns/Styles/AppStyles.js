@@ -1,19 +1,15 @@
 import { StyleSheet } from 'react-native';
-import { Dimensions } from 'react-native';
 import * as col from './Colours';
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
-const tabBarHeight = (1 / 8) * windowHeight;
-const itemMargin = windowWidth / 12;
+import { tabBarHeight, itemMargin, windowWidth } from './Dimensions';
 
 export default StyleSheet.create({
   tabBar: {
     position: 'absolute',
     backgroundColor: col.background,
     height: tabBarHeight,
-    borderTopLeftRadius: tabBarHeight / 2,
-    borderTopRightRadius: tabBarHeight / 2,
+    borderTopLeftRadius: tabBarHeight / 4,
+    borderTopRightRadius: tabBarHeight / 4,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.27,

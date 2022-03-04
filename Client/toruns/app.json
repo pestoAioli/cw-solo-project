@@ -17,6 +17,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.adriamcassorla.toruns",
+      "buildNumber": "1.0.0",
       "config": {
         "googleMapsApiKey": "AIzaSyBT8Vp-7bhPYgDW-eAgoArCc6OoDpxBoBQ"
       }

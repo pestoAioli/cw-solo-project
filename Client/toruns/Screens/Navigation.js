@@ -1,7 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View } from 'react-native';
+import React, { useContext } from 'react';
 
-const Navigation = () => {
+import RouteRangeContext from './../Context/context';
+
+const Navigation = ({ navigation }) => {
+  const { origin, range } = useContext(RouteRangeContext);
+
   return (
     <View>
       <Text>Navigation</Text>
