@@ -27,8 +27,8 @@ export default TagButton;
 
 const styles = StyleSheet.create({
   container: {
-    height: 110,
-    width: 110,
+    height: '40%',
+    width: '40%',
     backgroundColor: col.accentLight,
     alignItems: 'center',
     justifyContent: 'center',

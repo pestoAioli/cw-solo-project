@@ -16,15 +16,16 @@ import beach from './../assets/icons/beach.png';
 import mountain from './../assets/icons/mountain.png';
 import restaurant from './../assets/icons/restaurant.png';
 import historical from './../assets/icons/moai.png';
+import RadiusButton from '../Components/RadiusButton';
 
-const Preferences = ({ setRangeSelected, navigation }) => {
+const Preferences = ({ setPrefsModal, navigation }) => {
   const { preferences, setPreferences } = useContext(RouteRangeContext);
 
   const tags = { mountain, beach, historical, restaurant };
   const types = { fastest, thrilling };
 
   const onDismiss = useCallback(() => {
-    setRangeSelected(false);
+    setPrefsModal(false);
   }, []);
 
   const onTag = useCallback((tag) => {
@@ -40,7 +41,7 @@ const Preferences = ({ setRangeSelected, navigation }) => {
       type: routeType,
     });
     navigation.navigate('Nav');
-    setRangeSelected(false);
+    setPrefsModal(false);
   }, []);
 
   return (
@@ -57,6 +58,9 @@ const Preferences = ({ setRangeSelected, navigation }) => {
             {Object.keys(tags).map((key) => (
               <TagButton tag={key} img={tags[key]} onPress={onTag} key={key} />
             ))}
+          </View>
+          <View style={styles.radBtn}>
+            <RadiusButton />
           </View>
         </View>
         <View style={styles.btnContainer}>
@@ -119,7 +123,7 @@ const styles = StyleSheet.create({
   },
   text: {
     padding: 10,
-    fontSize: 18,
+    fontSize: 17,
     color: col.highContrast,
   },
   btnContainer: {
@@ -128,5 +132,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     flexDirection: 'row',
+  },
+  radBtn: {
+    flex: 1,
+    width: 120,
   },
 });

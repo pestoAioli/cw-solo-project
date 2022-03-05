@@ -17,10 +17,10 @@ import RouteContext from './Context/routeContext';
 const Tab = createBottomTabNavigator();
 
 function App() {
-  const [range, setRange] = useState(30);
   const [origin, setOrigin] = useState(null);
+  const [range, setRange] = useState(30);
   const [preferences, setPreferences] = useState({ filters: [], type: '' });
-  const [rangeSelected, setRangeSelected] = useState(false);
+  const [prefsModal, setPrefsModal] = useState(false);
   const routeSetUp = {
     range,
     setRange,
@@ -62,8 +62,8 @@ function App() {
               {(props) => (
                 <RangeSelection
                   {...props}
-                  rangeSelected={rangeSelected}
-                  setRangeSelected={setRangeSelected}
+                  prefsModal={prefsModal}
+                  setPrefsModal={setPrefsModal}
                 />
               )}
             </Tab.Screen>
@@ -87,7 +87,7 @@ function App() {
                 tabPress: (e) => {
                   // Prevent default action
                   e.preventDefault();
-                  if (!currentRoute) setRangeSelected(true);
+                  if (!currentRoute) setPrefsModal(true);
                   else navigation.navigate('Nav');
                 },
               })}
