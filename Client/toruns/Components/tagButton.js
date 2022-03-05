@@ -1,9 +1,12 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, TouchableOpacity, Image } from 'react-native';
 import React, { useContext } from 'react';
 
-import RouteRangeContext from './../Context/context';
+import RouteRangeContext from './../Context/routeSetUp';
 
 import * as col from './../Styles/Colours';
+
+// Creates a squared button, with a given image, onPress callback, and a tag.
+// The tag is a string that will be passed to the callback.
 
 const TagButton = ({ img, onPress, tag }) => {
   const { preferences } = useContext(RouteRangeContext);
@@ -42,6 +45,7 @@ const styles = StyleSheet.create({
   },
   selected: {
     backgroundColor: col.interactiveLight,
+    opacity: 0.9,
   },
   unSelected: {
     backgroundColor: col.accentLight,

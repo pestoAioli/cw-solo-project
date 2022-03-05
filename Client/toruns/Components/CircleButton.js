@@ -3,6 +3,9 @@ import React from 'react';
 
 import * as col from './../Styles/Colours';
 
+// Creates a rounded button, with a given image, onPress callback, and a type of route.
+// The type of route is a string that will be passed to the callback.
+
 const CircleButton = ({ img, onPress, routeType }) => {
   return (
     <TouchableOpacity

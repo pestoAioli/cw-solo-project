@@ -11,16 +11,17 @@ import Navigation from './Screens/Navigation';
 import RangeSelection from './Screens/RangeSelection';
 
 import React, { useState } from 'react';
-import RouteRangeContext from './Context/context';
+import RouteRangeContext from './Context/routeSetUp';
+import RouteContext from './Context/routeContext';
 
 const Tab = createBottomTabNavigator();
 
 function App() {
-  const [range, setRange] = useState(25);
+  const [range, setRange] = useState(30);
   const [origin, setOrigin] = useState(null);
   const [preferences, setPreferences] = useState({ filters: [], type: '' });
   const [rangeSelected, setRangeSelected] = useState(false);
-  const routeRange = {
+  const routeSetUp = {
     range,
     setRange,
     origin,
@@ -28,79 +29,85 @@ function App() {
     preferences,
     setPreferences,
   };
+  const [currentRoute, setCurrentRoute] = useState(null);
+  const routeCtx = { currentRoute, setCurrentRoute };
+
   return (
-    <RouteRangeContext.Provider value={routeRange}>
-      <NavigationContainer>
-        <Tab.Navigator
-          initialRouteName="Home"
-          screenOptions={{
-            headerShown: false,
-            tabBarActiveTintColor: col.highContrast,
-            tabBarInactiveTintColor: col.highContrastReduced,
-            tabBarStyle: styles.tabBar,
-            tabBarLabelStyle: { display: 'none' },
-            tabBarItemStyle: styles.tabBarItem,
-          }}
-        >
-          <Tab.Screen
-            name="Home"
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="selection-marker"
-                  color={color}
-                  size={size * 1.3}
-                />
-              ),
+    <RouteRangeContext.Provider value={routeSetUp}>
+      <RouteContext.Provider value={routeCtx}>
+        <NavigationContainer>
+          <Tab.Navigator
+            initialRouteName="Home"
+            screenOptions={{
+              headerShown: false,
+              tabBarActiveTintColor: col.highContrast,
+              tabBarInactiveTintColor: col.highContrastReduced,
+              tabBarStyle: styles.tabBar,
+              tabBarLabelStyle: { display: 'none' },
+              tabBarItemStyle: styles.tabBarItem,
             }}
           >
-            {(props) => (
-              <RangeSelection
-                {...props}
-                rangeSelected={rangeSelected}
-                setRangeSelected={setRangeSelected}
-              />
-            )}
-          </Tab.Screen>
-          <Tab.Screen
-            name="Nav"
-            component={Navigation}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="navigation"
-                  color={color}
-                  size={size * 1.8}
+            <Tab.Screen
+              name="Home"
+              options={{
+                tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons
+                    name="selection-marker"
+                    color={color}
+                    size={size * 1.3}
+                  />
+                ),
+              }}
+            >
+              {(props) => (
+                <RangeSelection
+                  {...props}
+                  rangeSelected={rangeSelected}
+                  setRangeSelected={setRangeSelected}
                 />
-              ),
-              tabBarItemStyle: {
-                ...styles.tabBarItem,
-                backgroundColor: col.interactive,
-              },
-            }}
-            listeners={{
-              tabPress: (e) => {
-                // Prevent default action
-                e.preventDefault();
-                setRangeSelected(true);
-              },
-            }}
-          />
-          <Tab.Screen
-            name="Profile"
-            component={ProfileStack}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="face-profile-woman"
-                  color={color}
-                  size={size * 1.3}
-                />
-              ),
-            }}
-          />
-        </Tab.Navigator>
-      </NavigationContainer>
+              )}
+            </Tab.Screen>
+            <Tab.Screen
+              name="Nav"
+              component={Navigation}
+              options={{
+                tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons
+                    name="navigation"
+                    color={color}
+                    size={size * 1.8}
+                  />
+                ),
+                tabBarItemStyle: {
+                  ...styles.tabBarItem,
+                  backgroundColor: col.interactive,
+                },
+              }}
+              listeners={({ navigation, route }) => ({
+                tabPress: (e) => {
+                  // Prevent default action
+                  e.preventDefault();
+                  if (!currentRoute) setRangeSelected(true);
+                  else navigation.navigate('Nav');
+                },
+              })}
+            />
+            <Tab.Screen
+              name="Profile"
+              component={ProfileStack}
+              options={{
+                tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons
+                    name="face-profile-woman"
+                    color={color}
+                    size={size * 1.3}
+                  />
+                ),
+              }}
+            />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </RouteContext.Provider>
     </RouteRangeContext.Provider>
   );
 }

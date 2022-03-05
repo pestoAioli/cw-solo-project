@@ -8,12 +8,15 @@ import { windowWidth, windowHeight } from './../Styles/Dimensions';
 import { getCurrentLocation } from '../Services/locationServices';
 import Loader from './Loader';
 
-import RouteRangeContext from './../Context/context';
+import RouteRangeContext from './../Context/routeSetUp';
 
 const SelectionMap = () => {
   const [region, setRegion] = useState(null);
+  const [zoom, setZoom] = useState(9);
   const { range, setOrigin } = useContext(RouteRangeContext);
 
+  // Checks the user current location the first time the component is mounted.
+  // Uses tsid value to set the map center, and the route origin.
   useEffect(() => {
     getCurrentLocation().then((loc) => {
       setOrigin([loc.coords.latitude, loc.coords.longitude]);
@@ -26,23 +29,35 @@ const SelectionMap = () => {
     });
   }, []);
 
-  const onRegionChange = (newRegion) => {
-    const { longitudeDelta, latitudeDelta } = newRegion;
-    setRegion({
-      ...region,
-      latitudeDelta,
-      longitudeDelta,
-    });
+  // Sets the maximum zoom level in order to always see the
+  // entire range on the screen when moving the slider.
+  useEffect(() => {
+    const minZoom = 6.7;
+    const maxZoom = 10;
+    const minKm = 20;
+    const maxKm = 200;
+    const zoomRange = maxZoom - minZoom;
+    const kmRange = maxKm - minKm;
+    setZoom(maxZoom - ((range - minKm) / kmRange) * zoomRange);
+  }, [range]);
+
+  // Resets the maxZoom in order to enable zoom in once the region has been set.
+  const resetZoom = () => {
+    if (zoom < 15) setZoom(15);
   };
 
   return region ? (
     <MapView
       style={styles.map}
-      region={region}
+      initialRegion={region}
+      minZoomLevel={5.5}
+      maxZoomLevel={zoom}
+      pitchEnabled={false}
+      tintColor={col.highContrast}
       customMapStyle={MapStyle}
       provider={PROVIDER_GOOGLE}
       showsUserLocation={true}
-      onRegionChangeComplete={onRegionChange}
+      onRegionChange={resetZoom}
     >
       <Circle
         center={region}

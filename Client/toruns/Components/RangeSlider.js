@@ -1,31 +1,38 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React, { useState, useContext } from 'react';
+import { StyleSheet, View } from 'react-native';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { Slider } from 'react-native-elements';
 import * as col from './../Styles/Colours';
 import { windowWidth, windowHeight } from '../Styles/Dimensions';
 
-import RouteRangeContext from './../Context/context';
+import RouteRangeContext from './../Context/routeSetUp';
 
+// Creates a slider to set the km range of the route.
 const RangeSlider = () => {
   const { range, setRange } = useContext(RouteRangeContext);
-  const handleSliderChange = (val) => {
-    setRange(val);
-  };
+  const [value, setValue] = useState(range * 1000);
+
+  useEffect(() => {
+    setValue(range * 1000);
+  }, [range]);
+
+  const handleSliderChange = useCallback((val) => {
+    setRange(val / 1000);
+    setValue(val);
+  }, []);
 
   return (
     <View style={styles.sliderContainer}>
       <Slider
-        value={range}
+        value={value}
         onValueChange={handleSliderChange}
-        maximumValue={300}
-        minimumValue={20}
-        step={5000}
+        maximumValue={200000}
+        minimumValue={20000}
+        step={10000}
         allowTouchTrack
-        trackStyle={{
-          height: 10,
-          backgroundColor: 'transparent',
-        }}
-        thumbStyle={{ height: 20, width: 20, backgroundColor: col.accent }}
+        maximumTrackTintColor={col.lowContrast}
+        minimumTrackTintColor={col.highContrast}
+        trackStyle={styles.track}
+        thumbStyle={styles.thumb}
       />
     </View>
   );
@@ -42,5 +49,15 @@ const styles = StyleSheet.create({
     height: 50,
     width: windowWidth * 0.8,
     justifyContent: 'center',
+  },
+  track: {
+    height: 10,
+    backgroundColor: 'transparent',
+    borderRadius: 5,
+  },
+  thumb: {
+    height: 20,
+    width: 20,
+    backgroundColor: col.accent,
   },
 });
