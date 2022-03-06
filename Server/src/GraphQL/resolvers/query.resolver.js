@@ -10,8 +10,9 @@ exports.getLocation = async (_, args) => {
   const { origin, range, filters, type } = args.input;
 
   try {
+    console.log(args.input);
     const dest = await getRandomDestination(origin, range, filters);
-    if (!dest) throw e;
+    if (!dest) throw new Error();
 
     const url = getTomTomURL(origin, dest.coordinates, type);
     const result = await fetch(url);

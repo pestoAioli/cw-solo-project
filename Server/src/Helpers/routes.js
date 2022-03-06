@@ -1,23 +1,23 @@
 // @ts-nocheck
-"use strict";
-const { Locations } = require("./../Models");
+'use strict';
+const { Locations } = require('./../Models');
 
 // Creates a url to call the TomTom API
 const getTomTomURL = (start, dest, type) => {
-  const baseURL = "https://api.tomtom.com/routing/1/calculateRoute/";
+  const baseURL = 'https://api.tomtom.com/routing/1/calculateRoute/';
   const coords = `${start[0]}%2C${start[1]}%3A${dest[0]}%2C${dest[1]}/json`;
 
   const url = new URL(baseURL + coords);
   let params = {
-    instructionsType: "tagged",
-    routeRepresentation: "polyline",
-    computeTravelTimeFor: "all",
+    instructionsType: 'tagged',
+    routeRepresentation: 'polyline',
+    computeTravelTimeFor: 'all',
     routeType: type,
     traffic: true,
-    avoid: "unpavedRoads",
+    avoid: 'unpavedRoads',
   };
   const thrilling =
-    type === "thrilling" ? { hilliness: "high", windingness: "normal" } : {};
+    type === 'thrilling' ? { hilliness: 'high', windingness: 'normal' } : {};
 
   const token = { key: process.env.TOMTOM_API };
   params = Object.assign(params, thrilling, token);
@@ -52,10 +52,10 @@ const getRandomDestination = async (origin, range, filters) => {
   const allLocations = await Locations.find().exec();
   if (allLocations.length === 0) throw new Error();
 
-  const filteredLocs = allLocations.filter(
-    (loc) =>
-      filterByDistance(origin, loc.coordinates, range) &&
-      loc.tags.includes(filters[0])
+  const filteredLocs = allLocations.filter((loc) =>
+    filterByDistance(origin, loc.coordinates, range) && loc.tags.length > 0
+      ? loc.tags.includes(filters[0])
+      : true
   );
 
   const rand = Math.floor(Math.random() * filteredLocs.length);
