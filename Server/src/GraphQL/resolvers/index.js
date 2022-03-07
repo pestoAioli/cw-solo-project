@@ -6,7 +6,7 @@ const query = require('./query.resolver');
 
 const resolvers = {
   Query: {
-    getRoute: query.getFakeRoute,
+    getRoute: query.getRoute,
     getDestinationInfo: query.getDestinationInfo,
   },
 };

@@ -1,10 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-
 import { getRoute } from '../Services/APIService';
 
 import RouteSetUpContext from '../Context/routeSetUp';
 import RouteContext from '../Context/routeContext';
-import Loader from './../Components/Loader';
+import Loader from '../Components/Loader';
 import NavReady from '../Components/NavReady';
 
 import { initialiseRoute } from '../Services/navigationServices';
@@ -22,8 +21,7 @@ const Navigation = () => {
     });
   }, []);
 
-  if (!currentRoute) return <Loader />;
-  console.log(currentRoute.status);
+  if (true) return <Loader />;
   if (currentRoute.status === 'loaded') return <NavReady />;
   if (currentRoute.status === 'arrived') return <NavArrived />;
   else return <NavDirections />;
