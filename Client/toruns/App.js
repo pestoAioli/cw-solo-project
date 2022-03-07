@@ -94,12 +94,11 @@ function App() {
               }}
               listeners={({ navigation }) => ({
                 tabPress: (e) => {
-                  // Prevent default action
-                  if (navigation.isFocused()) {
-                    setCurrentRoute(null);
-                    navigation.navigate('Home');
-                  }
                   e.preventDefault();
+                  if (navigation.isFocused()) {
+                    navigation.navigate('Home');
+                    setCurrentRoute(null);
+                  }
                   if (!currentRoute) setPrefsModal(true);
                   else navigation.navigate('Nav');
                 },

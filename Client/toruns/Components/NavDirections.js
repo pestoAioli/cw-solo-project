@@ -23,9 +23,11 @@ const NavDirections = () => {
   const [dist, setDist] = useState(31); // Testing indoors
 
   useEffect(() => {
+    let subscription;
     Location.watchPositionAsync({ distanceInterval: 1 }, (loc) => {
       setCurrentLocation(loc.coords);
-    });
+    }).then((res) => (subscription = res));
+    return () => subscription.remove();
   }, []);
 
   // Called each time a new location is detected
@@ -90,8 +92,8 @@ const styles = StyleSheet.create({
   },
   testButton: {
     position: 'absolute',
-    left: 350,
-    top: 30,
+    left: windowWidth * 0.85,
+    top: 50,
     zIndex: 5,
   },
   testButtonText: {

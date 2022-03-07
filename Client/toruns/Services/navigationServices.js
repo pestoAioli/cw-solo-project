@@ -2,6 +2,7 @@
 // TODO: Move this logic to the server instead ??
 export const initialiseRoute = (data, routeIndex) => {
   const status = 'loaded';
+  const arrived = false;
   const destinationID = data.getRoute.id;
   const route = data.getRoute.route.routes[routeIndex];
   const summary = route.summary;
@@ -14,6 +15,7 @@ export const initialiseRoute = (data, routeIndex) => {
   return {
     destinationID,
     status,
+    arrived,
     summary,
     polyline,
     instructions,
@@ -64,8 +66,7 @@ export const updateNextPont = (pointIndex, route, setRoute) => {
     console.log("You've arrived");
     setRoute((route) => ({
       ...route,
-      status: 'arrived',
-      statusText: 'Arrived',
+      arrived: true,
     }));
   } else {
     setRoute((route) => ({

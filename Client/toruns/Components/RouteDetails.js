@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 
 import * as col from '../Styles/Colours';
-import { headerHeight, windowHeight, windowWidth } from '../Styles/Dimensions';
+import { windowWidth } from '../Styles/Dimensions';
 
 import Loader from './Loader';
 
@@ -24,10 +24,9 @@ const RouteDetails = () => {
     );
   }, []);
 
-  const firstStep = currentRoute.nextInstruction.message.replace(
-    /\s*\<.*?\>\s*/g,
-    ' '
-  );
+  const firstStep = currentRoute.nextInstruction.message
+    ? currentRoute.nextInstruction.message.replace(/\s*\<.*?\>\s*/g, ' ')
+    : '';
 
   return dest ? (
     <View style={[styles.routeContiner, styles.shadow]}>

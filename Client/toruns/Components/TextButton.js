@@ -20,16 +20,16 @@ const styles = StyleSheet.create({
   button: {
     marginVertical: 5,
     paddingHorizontal: 20,
-    backgroundColor: col.highContrastReduced,
+    backgroundColor: col.highContrast,
     height: 60,
     borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonText: {
-    fontSize: 30,
+    fontSize: 24,
     color: col.background,
-    fontWeight: '500',
+    fontWeight: '400',
   },
   shadow: {
     shadowColor: '#000',

@@ -49,14 +49,6 @@ const styles = StyleSheet.create({
     fontSize: 36,
     color: col.highContrast,
     fontWeight: '500',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 1,
-    elevation: 1,
   },
   shadow: {
     shadowColor: '#000',

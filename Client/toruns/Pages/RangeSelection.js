@@ -12,7 +12,7 @@ import * as dim from './../Styles/Dimensions';
 const RangeSelection = ({ prefsModal, setPrefsModal, navigation }) => {
   return (
     <View style={styles.container}>
-      <Modal animationType="fade" transparent={true} visible={prefsModal}>
+      <Modal animationType="slide" transparent={true} visible={prefsModal}>
         <Preferences setPrefsModal={setPrefsModal} navigation={navigation} />
       </Modal>
       <MainHeader />

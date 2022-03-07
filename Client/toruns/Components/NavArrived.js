@@ -5,7 +5,13 @@ import * as col from '../Styles/Colours';
 import { windowHeight, windowWidth } from '../Styles/Dimensions';
 import TextButton from './TextButton';
 
-const NavArrived = () => {
+const NavArrived = ({ setRoute, navigation }) => {
+  const showDetails = useCallback(() => {}, []);
+  const dismiss = useCallback(() => {
+    setRoute(null);
+    navigation.navigate('Home');
+  }, []);
+
   return (
     <BlurView intensity={60} style={styles.container}>
       <View style={styles.centralContainer}>
@@ -17,8 +23,8 @@ const NavArrived = () => {
         </View>
         <View style={styles.buttonsView}>
           <Text style={styles.subTitle}>Do you want to know more?</Text>
-          <TextButton text={'Yes, sure!'} handleClick={() => {}} />
-          <TextButton text={'No, thanks'} handleClick={() => {}} />
+          <TextButton text={'Yes, sure!'} handleClick={showDetails} />
+          <TextButton text={'No, thanks...'} handleClick={dismiss} />
         </View>
       </View>
     </BlurView>
