@@ -6,11 +6,20 @@ input dirInput {
   type: String!
 }
 
-type LocationResp {
+type RouteResp {
   id: String!
   route: Directions!
 }
 
+type DestinationResp {
+  coordinates: [Float!]!
+  name: String!
+  altitude: Int
+  description: String!
+  tags: [String!]!
+}
+
 type Query {
-  getLocation(input: dirInput!): LocationResp!
+  getRoute(input: dirInput!): RouteResp!
+  getDestinationInfo(id: String!): DestinationResp!
 }

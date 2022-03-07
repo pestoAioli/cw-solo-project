@@ -6,7 +6,9 @@ const {
   getRandomDestination,
 } = require('./../../Helpers/routes');
 
-exports.getLocation = async (_, args) => {
+const { Locations } = require('./../../Models');
+
+exports.getRoute = async (_, args) => {
   const { origin, range, filters, type } = args.input;
 
   try {
@@ -26,7 +28,7 @@ exports.getLocation = async (_, args) => {
 };
 
 // For testing navigation, it returns a predefined response
-exports.getFakeLocation = async () => {
+exports.getFakeRoute = async () => {
   const path = require('path');
   const fs = require('fs');
 
@@ -35,4 +37,9 @@ exports.getFakeLocation = async () => {
   const response = await JSON.parse(file);
   console.log(response);
   return response;
+};
+
+exports.getDestinationInfo = async (_, args) => {
+  const id = args.id;
+  return await Locations.findOne({ _id: id }).exec();
 };
