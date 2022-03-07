@@ -1,85 +1,43 @@
 // @ts-nocheck
-import { StyleSheet, Text, View, Image } from 'react-native';
-import React from 'react';
+import { StyleSheet, View, Image } from 'react-native';
+import React, { useContext } from 'react';
 
 import turn from './../assets/icons/Nav_turn.png';
 import uTurn from './../assets/icons/Nav_u-turn.png';
-import round from './../assets/icons/Nav_roundabout.png';
-import roundArrow from './../assets/icons/Nav_roundabout-arrow.png';
 import follow from './../assets/icons/Nav_follow.png';
 
-import * as col from './../Styles/Colours';
+import RouteContext from '../Context/routeContext';
+import NavRoundabout from './NavRoundabout';
 
-const NavSymbol = ({ instruction }) => {
-  const {
-    junctionType,
-    maneuver,
-    turnAngleInDecimalDegrees,
-    roundaboutExitNumber,
-  } = instruction;
+const NavSymbol = ({ style }) => {
+  const { currentRoute } = useContext(RouteContext);
+  const { junctionType, maneuver } = currentRoute.nextInstruction;
 
-  const turnAngle = turnAngleInDecimalDegrees
-    ? turnAngleInDecimalDegrees + 'deg'
-    : null;
+  // If it is not time to show a symbol, returns null.
+  const showSymbol =
+    currentRoute.status === 'approaching' || currentRoute.status === 'maneuver';
+  if (!showSymbol) return null;
 
-  const isLeft = new RegExp('LEFT');
-  const isRight = new RegExp('RIGHT');
-  const isUTurn = new RegExp('UTURN');
-
+  // Case Roundabout
   if (junctionType === 'ROUNDABOUT') {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.rountText}>{roundaboutExitNumber}</Text>
-        <View style={styles.containerRound}>
-          <Image
-            source={round}
-            style={styles.imgRound}
-            resizeMode={'contain'}
-          />
-        </View>
-        {turnAngle ? (
-          <View style={styles.containerRound}>
-            <Image
-              source={roundArrow}
-              style={styles.imgRound}
-              transform={[{ rotate: turnAngle }]}
-              resizeMode={'contain'}
-            />
-          </View>
-        ) : null}
-      </View>
-    );
+    return <NavRoundabout style={style} />;
   }
 
-  if (isLeft.test(maneuver) || isRight.test(maneuver)) {
-    return (
-      <View style={styles.container}>
-        <Image
-          source={turn}
-          style={[styles.img, isLeft.test(maneuver) ? styles.imgLeft : null]}
-          resizeMode={'contain'}
-        />
-      </View>
-    );
-  }
+  // If not, checks which type of turn is making (very basic).
+  const isLeft = new RegExp('LEFT').test(maneuver);
+  const isRight = new RegExp('RIGHT').test(maneuver);
+  const isUTurn = new RegExp('UTURN').test(maneuver);
+  const symbol = isLeft || isRight ? turn : isUTurn ? uTurn : follow;
 
-  if (isUTurn.test(maneuver)) {
-    return (
-      <View style={styles.container}>
-        <Image source={uTurn} style={styles.img} resizeMode={'contain'} />
-      </View>
-    );
-  }
-
-  if (maneuver === 'FOLLOW' || maneuver === 'STRAIGHT') {
-    return (
-      <View style={styles.container}>
-        <Image source={follow} style={styles.img} resizeMode={'contain'} />
-      </View>
-    );
-  }
-
-  return null;
+  return (
+    <View style={style}>
+      <Image
+        source={symbol}
+        style={[styles.img, isLeft ? styles.imgLeft : null]}
+        resizeMode={'contain'}
+      />
+    </View>
+  );
 };
 
 export default NavSymbol;
@@ -90,28 +48,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  containerRound: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  rountText: {
-    fontSize: 80,
-    color: col.highContrast,
-  },
   img: {
-    width: '100%',
-    height: '100%',
+    width: '80%',
+    height: '80%',
   },
   imgLeft: {
     transform: [{ scaleX: -1 }],
-  },
-  imgRound: {
-    width: '140%',
-    height: '140%',
   },
 });

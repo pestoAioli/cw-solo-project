@@ -1,11 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import * as col from '../Styles/Colours';
 import { windowWidth, tabBarHeight } from '../Styles/Dimensions';
 
-const NavText = ({ text }) => {
+import RouteContext from '../Context/routeContext';
+
+const NavText = () => {
+  const { currentRoute } = useContext(RouteContext);
+  const text = currentRoute.statusText;
   let textToShow = text;
+
+  if (!text) return null;
+
   if (typeof text === 'number') {
     textToShow = text < 1000 ? text + ' m' : (text / 1000).toFixed(2) + ' km';
   }

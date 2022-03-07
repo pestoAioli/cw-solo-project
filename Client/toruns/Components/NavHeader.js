@@ -14,15 +14,14 @@ const NavHeader = ({}) => {
 
   let kmRemaining = '-';
   let timeRemaining = '-';
-
-  if (currentRoute && currentRoute.nextPoint) {
+  if (currentRoute) {
     kmRemaining =
       (currentRoute.summary.lengthInMeters -
-        currentRoute.instructions[currentRoute.nextPoint].routeOffsetInMeters) /
+        currentRoute.nextInstruction.routeOffsetInMeters) /
       1000;
     timeRemaining = Math.round(
       (currentRoute.summary.travelTimeInSeconds -
-        currentRoute.instructions[currentRoute.nextPoint].travelTimeInSeconds) /
+        currentRoute.nextInstruction.travelTimeInSeconds) /
         60
     );
   }

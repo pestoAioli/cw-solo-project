@@ -1,11 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 
 import * as col from '../Styles/Colours';
 import { windowWidth } from '../Styles/Dimensions';
 
-const NavManeuver = ({ street, signPost, roadNums }) => {
-  return street || signPost || roadNums ? (
+import RouteContext from '../Context/routeContext';
+
+const NavManeuver = () => {
+  const { currentRoute } = useContext(RouteContext);
+  const { street, signPost, roadNums } = currentRoute.nextInstruction;
+
+  const isManeuvering = currentRoute.status === 'maneuver';
+
+  return isManeuvering && (street || signPost || roadNums) ? (
     <View style={styles.container}>
       {street ? <Text style={styles.text}>{street}</Text> : null}
       {signPost ? <Text style={styles.text}>{signPost}</Text> : null}
