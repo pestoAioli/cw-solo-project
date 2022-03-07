@@ -4,21 +4,23 @@ import { Slider } from 'react-native-elements';
 import * as col from './../Styles/Colours';
 import { windowWidth, windowHeight } from '../Styles/Dimensions';
 
-import RouteRangeContext from './../Context/routeSetUp';
+import RouteSetUp from './../Context/routeSetUp';
 
 // Creates a slider to set the km range of the route.
 const RangeSlider = () => {
-  const { range, setRange } = useContext(RouteRangeContext);
-  const [value, setValue] = useState(range * 1000);
+  const { routeParams, setRouteParams } = useContext(RouteSetUp);
+  const [value, setValue] = useState(routeParams.range * 1000);
 
   useEffect(() => {
-    setValue(range * 1000);
-  }, [range]);
+    setValue(routeParams.range * 1000);
+  }, [routeParams.range]);
 
-  const handleSliderChange = useCallback((val) => {
-    setRange(val / 1000);
-    setValue(val);
-  }, []);
+  const handleSliderChange = useCallback(
+    (val) => {
+      setRouteParams((prefs) => ({ ...prefs, range: val / 1000 }));
+    },
+    [routeParams.range]
+  );
 
   return (
     <View style={styles.sliderContainer}>

@@ -1,7 +1,7 @@
 import { StyleSheet, TouchableOpacity, Image } from 'react-native';
 import React, { useContext } from 'react';
 
-import RouteRangeContext from './../Context/routeSetUp';
+import RouteSetUp from './../Context/routeSetUp';
 
 import * as col from './../Styles/Colours';
 
@@ -9,12 +9,12 @@ import * as col from './../Styles/Colours';
 // The tag is a string that will be passed to the callback.
 
 const TagButton = ({ img, onPress, tag }) => {
-  const { preferences } = useContext(RouteRangeContext);
+  const { routeParams } = useContext(RouteSetUp);
   return (
     <TouchableOpacity
       style={[
         styles.container,
-        preferences.filters.includes(tag) ? styles.selected : styles.unSelected,
+        routeParams.filters.includes(tag) ? styles.selected : styles.unSelected,
       ]}
       onPress={() => onPress(tag)}
     >
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   selected: {
-    backgroundColor: col.interactiveLight,
+    backgroundColor: col.highContrastReduced,
     opacity: 0.9,
   },
   unSelected: {

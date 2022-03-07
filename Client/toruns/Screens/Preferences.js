@@ -5,7 +5,7 @@ import { BlurView } from 'expo-blur';
 
 import * as col from './../Styles/Colours';
 import { windowWidth, windowHeight } from './../Styles/Dimensions';
-import RouteRangeContext from './../Context/routeSetUp';
+import RouteSetUp from './../Context/routeSetUp';
 import CircleButton from '../Components/CircleButton';
 import TagButton from '../Components/TagButton';
 
@@ -19,7 +19,7 @@ import historical from './../assets/icons/moai.png';
 import RadiusButton from '../Components/RadiusButton';
 
 const Preferences = ({ setPrefsModal, navigation }) => {
-  const { preferences, setPreferences } = useContext(RouteRangeContext);
+  const { routeParams, setRouteParams } = useContext(RouteSetUp);
 
   const tags = { mountain, beach, historical, restaurant };
   const types = { fastest, thrilling };
@@ -28,21 +28,27 @@ const Preferences = ({ setPrefsModal, navigation }) => {
     setPrefsModal(false);
   }, []);
 
-  const onTag = useCallback((tag) => {
-    setPreferences({
-      ...preferences,
-      filters: [tag],
-    });
-  }, []);
+  const onTag = useCallback(
+    (tag) => {
+      setRouteParams((params) => ({
+        ...params,
+        filters: [tag],
+      }));
+    },
+    [routeParams.filters]
+  );
 
-  const onGo = useCallback((routeType) => {
-    setPreferences({
-      ...preferences,
-      type: routeType,
-    });
-    navigation.navigate('Nav');
-    setPrefsModal(false);
-  }, []);
+  const onGo = useCallback(
+    (routeType) => {
+      setRouteParams((params) => ({
+        ...params,
+        type: routeType,
+      }));
+      navigation.navigate('Nav');
+      setPrefsModal(false);
+    },
+    [routeParams.type]
+  );
 
   return (
     <TouchableOpacity style={styles.container} onPressOut={onDismiss}>

@@ -11,29 +11,27 @@ import Navigation from './Screens/Navigation';
 import RangeSelection from './Screens/RangeSelection';
 
 import React, { useState } from 'react';
-import RouteRangeContext from './Context/routeSetUp';
+import RouteSetUp from './Context/routeSetUp';
 import RouteContext from './Context/routeContext';
 
 const Tab = createBottomTabNavigator();
 
 function App() {
-  const [origin, setOrigin] = useState(null);
-  const [range, setRange] = useState(30);
-  const [preferences, setPreferences] = useState({ filters: [], type: '' });
-  const [prefsModal, setPrefsModal] = useState(false);
-  const routeSetUp = {
-    range,
-    setRange,
-    origin,
-    setOrigin,
-    preferences,
-    setPreferences,
-  };
+  const [routeParams, setRouteParams] = useState({
+    origin: null,
+    range: 30,
+    filters: [],
+    type: '',
+  });
+  const routeSetUp = { routeParams, setRouteParams };
+
   const [currentRoute, setCurrentRoute] = useState(null);
   const routeCtx = { currentRoute, setCurrentRoute };
 
+  const [prefsModal, setPrefsModal] = useState(false);
+
   return (
-    <RouteRangeContext.Provider value={routeSetUp}>
+    <RouteSetUp.Provider value={routeSetUp}>
       <RouteContext.Provider value={routeCtx}>
         <NavigationContainer>
           <Tab.Navigator
@@ -108,7 +106,7 @@ function App() {
           </Tab.Navigator>
         </NavigationContainer>
       </RouteContext.Provider>
-    </RouteRangeContext.Provider>
+    </RouteSetUp.Provider>
   );
 }
 

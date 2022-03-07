@@ -7,7 +7,7 @@ export const getRoute = async (routeParams) => {
   const variables = { input: routeParams };
 
   const query = gql`
-    query getLocation($input: dirInput!) {
+    query GetLocation($input: dirInput!) {
       getLocation(input: $input) {
         id
         route {
@@ -17,6 +17,12 @@ export const getRoute = async (routeParams) => {
               travelTimeInSeconds
               arrivalTime
             }
+            legs {
+              points {
+                latitude
+                longitude
+              }
+            }
             guidance {
               instructions {
                 point {
@@ -25,7 +31,13 @@ export const getRoute = async (routeParams) => {
                 }
                 street
                 maneuver
-                message
+                signpostText
+                roadNumbers
+                roundaboutExitNumber
+                junctionType
+                travelTimeInSeconds
+                routeOffsetInMeters
+                turnAngleInDecimalDegrees
               }
             }
           }

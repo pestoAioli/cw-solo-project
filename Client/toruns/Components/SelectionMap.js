@@ -8,18 +8,21 @@ import { windowWidth, windowHeight } from './../Styles/Dimensions';
 import { getCurrentLocation } from '../Services/locationServices';
 import Loader from './Loader';
 
-import RouteRangeContext from './../Context/routeSetUp';
+import RouteSetUp from './../Context/routeSetUp';
 
 const SelectionMap = () => {
   const [region, setRegion] = useState(null);
   const [zoom, setZoom] = useState(9);
-  const { range, setOrigin } = useContext(RouteRangeContext);
+  const { routeParams, setRouteParams } = useContext(RouteSetUp);
 
   // Checks the user current location the first time the component is mounted.
   // Uses tsid value to set the map center, and the route origin.
   useEffect(() => {
     getCurrentLocation().then((loc) => {
-      setOrigin([loc.coords.latitude, loc.coords.longitude]);
+      setRouteParams((params) => ({
+        ...params,
+        origin: [loc.coords.latitude, loc.coords.longitude],
+      }));
       setRegion({
         latitudeDelta: 0.8,
         longitudeDelta: 0.8,
@@ -38,8 +41,8 @@ const SelectionMap = () => {
     const maxKm = 200;
     const zoomRange = maxZoom - minZoom;
     const kmRange = maxKm - minKm;
-    setZoom(maxZoom - ((range - minKm) / kmRange) * zoomRange);
-  }, [range]);
+    setZoom(maxZoom - ((routeParams.range - minKm) / kmRange) * zoomRange);
+  }, [routeParams.range]);
 
   // Resets the maxZoom in order to enable zoom in once the region has been set.
   const resetZoom = () => {
@@ -61,7 +64,7 @@ const SelectionMap = () => {
     >
       <Circle
         center={region}
-        radius={range * 1000}
+        radius={routeParams.range * 1000}
         strokeColor={col.accent}
         fillColor={col.accentLightTrans}
       />

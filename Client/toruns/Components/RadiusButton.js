@@ -2,14 +2,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import React, { useContext } from 'react';
 import * as col from '../Styles/Colours';
 
-import RouteRangeContext from './../Context/routeSetUp';
+import RouteSetUp from './../Context/routeSetUp';
 
 const RadiusButton = () => {
-  const { range } = useContext(RouteRangeContext);
+  const { routeParams } = useContext(RouteSetUp);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Range: {range} Km</Text>
+      <Text style={styles.text}>Range: {routeParams.range} Km</Text>
     </View>
   );
 };

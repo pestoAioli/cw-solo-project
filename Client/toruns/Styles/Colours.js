@@ -8,5 +8,5 @@ export const interactiveLight = '#FBE39D';
 export const background = '#F0F4F2';
 export const highContrast = '#2A362F';
 
-export const highContrastReduced = '#6C756F';
+export const highContrastReduced = '#678774';
 export const lowContrast = '#CED4D1';
