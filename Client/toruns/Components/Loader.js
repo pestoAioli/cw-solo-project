@@ -10,7 +10,7 @@ import o from './../assets/logoLetters/o.png';
 import u from './../assets/logoLetters/u.png';
 import r from './../assets/logoLetters/r.png';
 import n from './../assets/logoLetters/n.png';
-import { headerHeight } from '../Styles/Dimensions';
+import { headerHeight, windowHeight } from '../Styles/Dimensions';
 
 const Loader = () => {
   return (
@@ -19,8 +19,8 @@ const Loader = () => {
         icons={[t, o, u, r, n]}
         leftRotation="-680deg"
         rightRotation="360deg"
-        leftDistance={-180}
-        rightDistance={-250}
+        leftDistance={-500}
+        rightDistance={-300}
         speed={1500}
         size={50}
       />
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: headerHeight * 2,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     backgroundColor: col.accentLight,
   },
   loadingText: {

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import React, { useContext, useCallback } from 'react';
 
 import MainHeader from './MainHeader';
@@ -7,9 +7,8 @@ import { headerHeight } from '../Styles/Dimensions';
 import RouteDetails from './RouteDetails';
 import { updateNextPont } from '../Services/navigationServices';
 
-import NavMap from './NavMap';
-
 import RouteContext from '../Context/routeContext';
+import TextButton from './TextButton';
 
 const NavReady = () => {
   const { currentRoute, setCurrentRoute } = useContext(RouteContext);
@@ -26,12 +25,7 @@ const NavReady = () => {
         <Text style={styles.titleText}>Your route is ready !!</Text>
       </View>
       <RouteDetails />
-      <TouchableOpacity
-        style={[styles.goButton, styles.shadow]}
-        onPress={handleClick}
-      >
-        <Text style={styles.buttonText}> START </Text>
-      </TouchableOpacity>
+      <TextButton text={'START'} handleClick={handleClick} />
     </View>
   );
 };
@@ -42,7 +36,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: col.accentLight,
-    paddingVertical: headerHeight,
+    paddingVertical: headerHeight + 30,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
@@ -63,20 +57,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 1,
     elevation: 1,
-  },
-  goButton: {
-    marginBottom: 40,
-    backgroundColor: col.accent,
-    height: 60,
-    width: 150,
-    borderRadius: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonText: {
-    fontSize: 30,
-    color: col.highContrast,
-    fontWeight: '500',
   },
   shadow: {
     shadowColor: '#000',

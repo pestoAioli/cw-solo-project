@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { getRoute } from '../Services/APIService';
 
+import { StyleSheet, View, Modal } from 'react-native';
 import RouteSetUpContext from '../Context/routeSetUp';
 import RouteContext from '../Context/routeContext';
 import Loader from '../Components/Loader';
@@ -13,6 +14,7 @@ import NavDirections from '../Components/NavDirections';
 const Navigation = () => {
   const { routeParams } = useContext(RouteSetUpContext);
   const { currentRoute, setCurrentRoute } = useContext(RouteContext);
+  const [arrived, setArrived] = useState(false);
 
   useEffect(() => {
     getRoute(routeParams).then((data) => {
@@ -21,10 +23,27 @@ const Navigation = () => {
     });
   }, []);
 
-  if (true) return <Loader />;
+  useEffect(() => {
+    if (currentRoute.status === 'arrived') setArrived(true);
+  }, [currentRoute.status]);
+
+  if (!currentRoute) return <Loader />;
   if (currentRoute.status === 'loaded') return <NavReady />;
-  if (currentRoute.status === 'arrived') return <NavArrived />;
-  else return <NavDirections />;
+  else
+    return (
+      <View style={styles.container}>
+        <NavDirections />
+        <Modal animationType="slide" transparent={true} visible={arrived}>
+          <NavArrived />
+        </Modal>
+      </View>
+    );
 };
 
 export default Navigation;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
