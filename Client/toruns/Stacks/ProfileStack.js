@@ -1,4 +1,4 @@
-import Profile from './../Screens/Profile';
+import Profile from './../Pages/Profile';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 

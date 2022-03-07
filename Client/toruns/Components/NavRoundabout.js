@@ -47,14 +47,14 @@ const styles = StyleSheet.create({
   containerRound: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    width: '100%',
+    left: '5%',
+    width: '90%',
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   rountText: {
-    fontSize: 80,
+    fontSize: 75,
     color: col.highContrast,
   },
   imgRound: {

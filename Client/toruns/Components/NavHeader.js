@@ -6,31 +6,31 @@ import RouteContext from '../Context/routeContext';
 
 import { headerHeight, windowWidth } from './../Styles/Dimensions';
 import * as col from './../Styles/Colours';
+import { formatRouteInfo } from '../Services/navigationServices';
 
 const NavHeader = ({}) => {
   // TODO: Calculate time and distance remaining with the total time, and the offset given by the API.
 
   const { currentRoute } = useContext(RouteContext);
 
-  let kmRemaining = '-';
-  let timeRemaining = '-';
+  let distanceRemaining = 0;
+  let timeRemaining = 0;
+
   if (currentRoute) {
-    kmRemaining =
-      (currentRoute.summary.lengthInMeters -
-        currentRoute.nextInstruction.routeOffsetInMeters) /
-      1000;
-    timeRemaining = Math.round(
-      (currentRoute.summary.travelTimeInSeconds -
-        currentRoute.nextInstruction.travelTimeInSeconds) /
-        60
-    );
+    distanceRemaining =
+      currentRoute.summary.lengthInMeters -
+      currentRoute.nextInstruction.routeOffsetInMeters;
+    timeRemaining =
+      currentRoute.summary.travelTimeInSeconds -
+      currentRoute.nextInstruction.travelTimeInSeconds;
   }
 
+  const { time, distance } = formatRouteInfo(timeRemaining, distanceRemaining);
   return (
     <View style={styles.header}>
       <Text style={[styles.text, styles.title]}>Destination at:</Text>
       <Text style={[styles.text, styles.subTitle]}>
-        {kmRemaining.toFixed(2)}km | {timeRemaining}min
+        {distance} | {time}
       </Text>
     </View>
   );

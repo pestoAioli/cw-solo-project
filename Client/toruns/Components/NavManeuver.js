@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '500',
     margin: 5,
+    textAlign: 'center',
   },
   roadNums: {
     flexDirection: 'row',

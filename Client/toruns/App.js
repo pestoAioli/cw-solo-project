@@ -7,8 +7,8 @@ import * as col from './Styles/Colours';
 import styles from './Styles/AppStyles';
 
 import ProfileStack from './Stacks/ProfileStack';
-import Navigation from './Screens/Navigation';
-import RangeSelection from './Screens/RangeSelection';
+import Navigation from './Pages/Navigation';
+import RangeSelection from './Pages/RangeSelection';
 
 import React, { useState } from 'react';
 import RouteSetUp from './Context/routeSetUp';
@@ -69,21 +69,36 @@ function App() {
               name="Nav"
               component={Navigation}
               options={{
-                tabBarIcon: ({ color, size }) => (
-                  <MaterialCommunityIcons
-                    name="navigation"
-                    color={color}
-                    size={size * 1.8}
-                  />
-                ),
+                tabBarIcon: ({ focused, color, size }) => {
+                  if (focused) {
+                    return (
+                      <MaterialCommunityIcons
+                        name="close"
+                        color={color}
+                        size={size * 1.5}
+                      />
+                    );
+                  }
+                  return (
+                    <MaterialCommunityIcons
+                      name="navigation"
+                      color={color}
+                      size={size * 1.8}
+                    />
+                  );
+                },
                 tabBarItemStyle: {
                   ...styles.tabBarItem,
                   backgroundColor: col.interactive,
                 },
               }}
-              listeners={({ navigation, route }) => ({
+              listeners={({ navigation }) => ({
                 tabPress: (e) => {
                   // Prevent default action
+                  if (navigation.isFocused()) {
+                    setCurrentRoute(null);
+                    navigation.navigate('Home');
+                  }
                   e.preventDefault();
                   if (!currentRoute) setPrefsModal(true);
                   else navigation.navigate('Nav');

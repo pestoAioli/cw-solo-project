@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import MapView, { PROVIDER_GOOGLE, Polyline } from 'react-native-maps';
 
 import * as col from './../Styles/Colours';
@@ -10,7 +10,7 @@ const NavMap = ({ region, polyline }) => {
   return (
     <MapView
       style={styles.map}
-      region={region}
+      initialRegion={region}
       zoomEnabled={false}
       pitchEnabled={false}
       showsBuildings={true}

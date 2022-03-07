@@ -1,12 +1,10 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import React, { useContext, useEffect, useState, useCallback } from 'react';
-import { getRoute } from '../Services/APIService';
+import React, { useContext, useState, useCallback, useEffect } from 'react';
 import * as Location from 'expo-location';
 import { BlurView } from 'expo-blur';
 
-import RouteSetUpContext from '../Context/routeSetUp';
 import RouteContext from '../Context/routeContext';
-import Loader from './../Components/Loader';
+
 import NavText from '../Components/NavText';
 import NavManeuver from '../Components/NavManeuver';
 import NavHeader from './../Components/NavHeader';
@@ -14,36 +12,21 @@ import NavSymbol from '../Components/NavSymbol';
 import NavMap from '../Components/NavMap';
 
 import * as col from './../Styles/Colours';
-import {
-  updateRouteStatus,
-  initialiseRoute,
-} from '../Services/navigationServices';
+import { updateRouteStatus } from '../Services/navigationServices';
 import { tabBarHeight, windowWidth } from '../Styles/Dimensions';
 
-import { calculateDistance } from '../Services/locationServices';
-
-const Navigation = ({ navigation }) => {
-  const { routeParams } = useContext(RouteSetUpContext);
+const NavDirections = () => {
   const { currentRoute, setCurrentRoute } = useContext(RouteContext);
-
   const [currentLocation, setCurrentLocation] = useState(null);
   const [region, setRegion] = useState(null);
 
-  const [dist, setDist] = useState(31);
+  const [dist, setDist] = useState(31); // Testing indoors
 
   useEffect(() => {
-    getRoute(routeParams).then((data) => {
-      const routeIndex = 0; // If no alternative routes asked, leave to 0.
-      setCurrentRoute(initialiseRoute(data, routeIndex));
-    });
     Location.watchPositionAsync({ distanceInterval: 1 }, (loc) => {
       setCurrentLocation(loc.coords);
     });
   }, []);
-
-  const addDistance = useCallback(() => {
-    setDist((curDist) => curDist - 1);
-  }, [dist]);
 
   // Called each time a new location is detected
   useEffect(() => {
@@ -56,21 +39,28 @@ const Navigation = ({ navigation }) => {
       });
 
       if (currentRoute) {
-        //   const nextPoint =
-        //     currentRoute.instructions[currentRoute.nextPoint].point;
-        //   const nextLocationAt = Math.round(
-        //     calculateDistance(currentLocation, nextPoint)
-        //   );
+        // REAL
+        // const nextLocationAt = Math.round(
+        //   calculateDistance(currentLocation, currentRoute.nextCoords)
+        // );
+
+        // TESTS INDOOR
         const nextLocationAt = dist;
+        // BOTH REAL AND TESTS.
         updateRouteStatus(nextLocationAt, currentRoute, setCurrentRoute);
-        setDist(30);
+
+        // Only for tests
+        setDist(20);
       }
     }
   }, [dist]);
 
-  return !currentRoute ? (
-    <Loader />
-  ) : (
+  // Used for testing indoors:
+  const addDistance = useCallback(() => {
+    setDist((curDist) => curDist - 1);
+  }, [dist]);
+
+  return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.testButton} onPress={addDistance}>
         <Text style={styles.testButtonText}>+</Text>
@@ -86,7 +76,7 @@ const Navigation = ({ navigation }) => {
   );
 };
 
-export default Navigation;
+export default NavDirections;
 
 const styles = StyleSheet.create({
   container: {

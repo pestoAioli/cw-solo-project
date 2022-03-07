@@ -1,13 +1,13 @@
 // Initialises a route with the data given by the server.
 // TODO: Move this logic to the server instead ??
 export const initialiseRoute = (data, routeIndex) => {
-  const status = 'stopped';
-  const destinationID = data.getLocation.id;
-  const route = data.getLocation.route.routes[routeIndex];
+  const status = 'loaded';
+  const destinationID = data.getRoute.id;
+  const route = data.getRoute.route.routes[routeIndex];
   const summary = route.summary;
   const polyline = route.legs[0].points;
   const instructions = route.guidance.instructions;
-  const nextIndex = 1;
+  const nextIndex = 0;
   const nextCoords = instructions[nextIndex].point;
   const nextInstruction = instructions[nextIndex];
 
@@ -33,11 +33,15 @@ export const updateRouteStatus = (nextloc, route, setRoute) => {
   let status = 'follow';
   let statusText = 'Continue...';
 
-  if (nextloc < 30) updateNextPont(route.nextIndex + 1, route, setRoute);
-  else if (nextloc < 500) {
+  if (nextloc < 20) {
+    updateNextPont(route.nextIndex + 1, route, setRoute);
+    return;
+  }
+
+  if (nextloc < 500) {
     status = 'maneuver';
     statusText =
-      nextloc < 80
+      nextloc < 50
         ? route.nextInstruction.maneuver.replace('_', ' ').toLowerCase()
         : (statusText = nextloc);
   } else if (nextloc < 2000) {
@@ -71,4 +75,18 @@ export const updateNextPont = (pointIndex, route, setRoute) => {
       nextInstruction: route.instructions[pointIndex],
     }));
   }
+};
+
+export const formatRouteInfo = (seconds, meters) => {
+  const formattedInfo = { time: '', distance: `${meters}m` };
+  if (meters > 1000) formattedInfo.distance = `${(meters / 1000).toFixed(2)}Km`;
+
+  let hours = Math.floor(seconds / 3600);
+  let min = Math.floor(seconds / 60 - hours * 60);
+
+  if (seconds < 60) formattedInfo.distance = '<1min';
+  else {
+    formattedInfo.time = hours ? `${hours}h ${min}min` : `${min}min`;
+  }
+  return formattedInfo;
 };
