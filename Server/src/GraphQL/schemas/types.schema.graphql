@@ -79,3 +79,18 @@ type location {
   description: String!
   tags: [String!]!
 }
+
+type visitedLocation {
+  locationID: String!
+  date: String!
+  polilyne: [Point!]!
+  origin: Point!
+}
+
+type user {
+  name: String!
+  surname: String!
+  email: String!
+  password: String!
+  locations_visited: [visitedLocation]
+}

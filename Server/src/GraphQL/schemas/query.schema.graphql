@@ -22,4 +22,5 @@ type DestinationResp {
 type Query {
   getRoute(input: dirInput!): RouteResp!
   getDestinationInfo(id: String!): DestinationResp!
+  getUser(id: String!): user!
 }

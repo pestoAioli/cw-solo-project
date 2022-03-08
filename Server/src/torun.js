@@ -5,9 +5,6 @@ require('dotenv').config();
 const server = require('./GraphQL');
 const { mongoose } = require('./Models');
 
-const IP = '192.168.1.137';
-const PORT = 4000;
-
 try {
   mongoose.connect(process.env.DB_URI, () => {
     console.log('Connected to Mongo Atlas! 🍃');

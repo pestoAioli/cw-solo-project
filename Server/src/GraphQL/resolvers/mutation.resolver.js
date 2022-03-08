@@ -1,15 +1,18 @@
-// 'use strict';
+'use strict';
 
-// const db = require('../db');
-// const { reduceMatches, writeJSON } = require('../../helpers/helper');
+const { Users } = require('./../../Models');
 
-// // Export the function to update the match type
-// exports.updateMatch = (_, { id, ...props } ) => {
-//   const match = reduceMatches(db.groups, db.knockout).find(match => id && match.id === id);
-//   if (!match) {
-//     throw new Error(`Couldn't find match with id ${id}`);
-//   }
-//   Object.assign(match, props);
-//   writeJSON(db);
-//   return match;
-// };
+exports.addVisitedDestination = (_, { userID, ...location }) => {
+  try {
+    Users.updateOne(
+      { _id: userID },
+      {
+        $push: { visited_locations: location },
+      }
+    ).exec();
+    return 'done';
+  } catch (e) {
+    console.log(e);
+    return e;
+  }
+};

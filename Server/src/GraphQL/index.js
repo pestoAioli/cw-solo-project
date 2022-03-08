@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
-const { ApolloServer } = require("apollo-server");
+const { ApolloServer } = require('apollo-server');
 
-const typeDefs = require("./schemas");
-const resolvers = require("./resolvers");
+const typeDefs = require('./schemas');
+const resolvers = require('./resolvers');
 
 module.exports = new ApolloServer({
   cors: true,

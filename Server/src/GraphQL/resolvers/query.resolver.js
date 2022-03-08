@@ -6,7 +6,7 @@ const {
   getRandomDestination,
 } = require('./../../Helpers/routes');
 
-const { Locations } = require('./../../Models');
+const { Locations, Users } = require('./../../Models');
 
 exports.getRoute = async (_, args) => {
   const { origin, range, filters, type } = args.input;
@@ -41,5 +41,18 @@ exports.getFakeRoute = async () => {
 
 exports.getDestinationInfo = async (_, args) => {
   const id = args.id;
-  return await Locations.findOne({ _id: id }).exec();
+  try {
+    return await Locations.findOne({ _id: id }).exec();
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+exports.getUser = async (_, args) => {
+  const id = args.id;
+  try {
+    return await Users.findOne({ _id: id }).exec();
+  } catch (e) {
+    console.error(e);
+  }
 };
