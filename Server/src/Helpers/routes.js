@@ -53,7 +53,7 @@ const getRandomDestination = async (origin, range, filters) => {
   if (allLocations.length === 0) throw new Error();
 
   const filteredLocs = allLocations.filter((loc) =>
-    filterByDistance(origin, loc.coordinates, range) && loc.tags.length > 0
+    filterByDistance(origin, loc.coordinates, range) && filters.length > 0
       ? loc.tags.includes(filters[0])
       : true
   );
