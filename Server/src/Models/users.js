@@ -19,7 +19,9 @@ const usersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  visited_locations: [String],
+  visited_locations: [
+    { type: mongoose.Schema.Types.ObjectId, ref: 'Locations' },
+  ],
 });
 
 module.exports = usersSchema;

@@ -73,6 +73,7 @@ type InstructionGroup {
 
 # Mongo DB
 type location {
+  _id: String!
   name: String!
   coordinates: [Float!]!
   altitude: Int!
@@ -80,16 +81,10 @@ type location {
   tags: [String!]!
 }
 
-type visitedLocation {
-  locationID: String!
-  date: String!
-  origin: Point!
-}
-
 type user {
   name: String!
   surname: String!
   email: String!
   password: String!
-  locations_visited: [visitedLocation]
+  visited_locations: [location]
 }
