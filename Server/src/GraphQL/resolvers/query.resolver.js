@@ -12,7 +12,6 @@ exports.getRoute = async (_, args) => {
   const { origin, range, filters, type } = args.input;
 
   try {
-    console.log(args.input);
     const dest = await getRandomDestination(origin, range, filters);
     if (!dest) throw new Error();
 
@@ -25,18 +24,6 @@ exports.getRoute = async (_, args) => {
     console.error(e);
     return { id: 'error', route: [] };
   }
-};
-
-// For testing navigation, it returns a predefined response
-exports.getFakeRoute = async () => {
-  const path = require('path');
-  const fs = require('fs');
-
-  const resPath = path.join(__dirname, './TomTomResponse.json');
-  const file = fs.readFileSync(resPath, 'utf-8');
-  const response = await JSON.parse(file);
-  console.log(response);
-  return response;
 };
 
 exports.getDestinationInfo = async (_, args) => {

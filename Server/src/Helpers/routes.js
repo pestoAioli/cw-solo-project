@@ -49,19 +49,27 @@ function deg2rad(deg) {
 
 const getRandomDestination = async (origin, range, filters) => {
   // TODO: Make the filter at the db, and just receive locations that match filters.
-  const allLocations = await Locations.find().exec();
-  if (allLocations.length === 0) throw new Error();
+  try {
+    const allLocations = await Locations.find().exec();
+    if (allLocations.length === 0) throw new Error();
+    let filteredLocs = allLocations.filter((loc) => {
+      if (filters.length) {
+        return (
+          filterByDistance(origin, loc.coordinates, range) &&
+          loc.tags.includes(filters[0])
+        );
+      }
+      return filterByDistance(origin, loc.coordinates, range);
+    });
 
-  const filteredLocs = allLocations.filter((loc) =>
-    filterByDistance(origin, loc.coordinates, range) && filters.length > 0
-      ? loc.tags.includes(filters[0])
-      : true
-  );
+    if (filteredLocs.length < 1) filteredLocs = allLocations;
 
-  const maxIdx = filteredLocs.length - 1;
-  const idx = maxIdx > 0 ? Math.floor(Math.random() * maxIdx) : 0;
-  console.log(idx, maxIdx);
-  return filteredLocs[idx];
+    const maxIdx = filteredLocs.length - 1;
+    const idx = maxIdx > 0 ? Math.floor(Math.random() * maxIdx) : 0;
+    return filteredLocs[idx];
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 module.exports = { getTomTomURL, getRandomDestination };
