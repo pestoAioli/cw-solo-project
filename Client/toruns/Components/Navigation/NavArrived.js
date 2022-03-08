@@ -1,14 +1,34 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { BlurView } from 'expo-blur';
-import * as col from '../Styles/Colours';
-import { windowHeight, windowWidth } from '../Styles/Dimensions';
-import TextButton from './TextButton';
+import * as col from '../../Styles/Colours';
+import { windowHeight, windowWidth } from '../../Styles/Dimensions';
+import TextButton from './../Buttons/TextButton';
 
-const NavArrived = ({ setRoute, navigation }) => {
-  const showDetails = useCallback(() => {}, []);
+import RouteContext from '../../Context/routeContext';
+import { addVisitedDestination } from '../../Services/APIService';
+
+const NavArrived = ({ navigation }) => {
+  const { currentRoute, setCurrentRoute } = useContext(RouteContext);
+
+  useEffect(() => {
+    //For testing, later it should be via authentication;
+    const userID = '622769314d76691f6f1ab550';
+    const locationID = currentRoute.destinationID;
+    addVisitedDestination(userID, locationID).catch(console.error);
+  }, []);
+
+  const showDetails = useCallback(() => {
+    const destID = currentRoute.destinationID;
+    setCurrentRoute(null);
+    navigation.navigate('Profile', {
+      screen: 'Details',
+      params: { destID },
+    });
+  }, []);
+
   const dismiss = useCallback(() => {
-    setRoute(null);
+    setCurrentRoute(null);
     navigation.navigate('Home');
   }, []);
 

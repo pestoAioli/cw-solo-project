@@ -63,7 +63,6 @@ export const updateRouteStatus = (nextloc, route, setRoute) => {
 // Otherwise, it changes the status to 'Arrived'
 export const updateNextPont = (pointIndex, route, setRoute) => {
   if (pointIndex >= route.instructions.length) {
-    console.log("You've arrived");
     setRoute((route) => ({
       ...route,
       arrived: true,

@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 import React, { useEffect } from 'react';
 import MapView, { PROVIDER_GOOGLE, Polyline } from 'react-native-maps';
 
-import * as col from './../Styles/Colours';
-import { windowHeight, windowWidth } from '../Styles/Dimensions';
-import NavMapStyle from './../Styles/NavMapStyle';
+import * as col from './../../Styles/Colours';
+import { windowHeight, windowWidth } from '../../Styles/Dimensions';
+import NavMapStyle from './../../Styles/NavMapStyle';
 
 const NavMap = ({ region, polyline }) => {
   return (

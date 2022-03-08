@@ -1,7 +1,17 @@
 import { request, gql, GraphQLClient } from 'graphql-request';
 
-const apiURL = 'https://c09d-45-130-134-153.ngrok.io';
+const apiURL = 'http://591d5de3-c2fd-431c-9a03-c576683e810a.clouding.host/';
+//const apiURL = 'http://localhost:4000';
 const client = new GraphQLClient(apiURL);
+
+export const addVisitedDestination = async (userId, locationId) => {
+  const mutation = gql`
+    mutation Mutation($userId: String!, $locationId: String!) {
+      addVisitedDestination(userID: $userId, locationID: $locationId)
+    }
+  `;
+  return await client.request(mutation, { userId, locationId });
+};
 
 export const getBasicDestinationInfo = async (id) => {
   const query = gql`

@@ -6,11 +6,11 @@ import { StyleSheet, View, Modal } from 'react-native';
 import RouteSetUpContext from '../Context/routeSetUp';
 import RouteContext from '../Context/routeContext';
 import Loader from '../Components/Loader';
-import NavReady from '../Components/NavReady';
+import NavReady from '../Components/Navigation/NavReady';
 
 import { initialiseRoute } from '../Services/navigationServices';
-import NavArrived from '../Components/NavArrived';
-import NavDirections from '../Components/NavDirections';
+import NavArrived from '../Components/Navigation/NavArrived';
+import NavDirections from '../Components/Navigation/NavDirections';
 
 const Navigation = ({ navigation }) => {
   const { routeParams } = useContext(RouteSetUpContext);
@@ -40,7 +40,7 @@ const Navigation = ({ navigation }) => {
           transparent={true}
           visible={currentRoute.arrived}
         >
-          <NavArrived setRoute={setCurrentRoute} navigation={navigation} />
+          <NavArrived navigation={navigation} />
         </Modal>
       </View>
     );

@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 
-import * as col from '../Styles/Colours';
-import { windowWidth } from '../Styles/Dimensions';
+import * as col from '../../Styles/Colours';
+import { windowWidth } from '../../Styles/Dimensions';
 
-import Loader from './Loader';
+import Loader from '../Loader';
 
-import RouteContext from '../Context/routeContext';
-import { formatRouteInfo } from '../Services/navigationServices';
-import { getBasicDestinationInfo } from '../Services/APIService';
+import RouteContext from '../../Context/routeContext';
+import { formatRouteInfo } from '../../Services/navigationServices';
+import { getBasicDestinationInfo } from '../../Services/APIService';
 
 const RouteDetails = () => {
   const { currentRoute } = useContext(RouteContext);

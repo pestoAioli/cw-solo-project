@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 
-import * as col from '../Styles/Colours';
+import * as col from '../../Styles/Colours';
 
 const TextButton = ({ text, handleClick }) => {
   return (

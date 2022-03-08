@@ -4,30 +4,24 @@ import React from 'react';
 
 import * as col from './../Styles/Colours';
 import { windowWidth, headerHeight } from './../Styles/Dimensions';
-import tournLogoGreen from '../assets/tournLogoGreen.png';
 
 // Header with title and subtitle.
-const MainHeader = () => {
+const LocationsHeader = () => {
   return (
     <View style={styles.header}>
-      <Image
-        source={tournLogoGreen}
-        style={styles.logo}
-        resizeMode={'contain'}
-      />
-      <Text style={styles.text}>Where your adventure starts!</Text>
+      <Text style={styles.text}>Locations:</Text>
     </View>
   );
 };
 
-export default MainHeader;
+export default LocationsHeader;
 
 const styles = StyleSheet.create({
   header: {
     position: 'absolute',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    height: headerHeight,
+    height: headerHeight * 0.8,
     width: windowWidth,
     zIndex: 1,
     backgroundColor: col.accent,
@@ -42,10 +36,7 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
   text: {
-    color: col.background,
-  },
-  logo: {
-    height: 50,
-    width: windowWidth * 0.4,
+    color: col.highContrast,
+    fontSize: 36,
   },
 });

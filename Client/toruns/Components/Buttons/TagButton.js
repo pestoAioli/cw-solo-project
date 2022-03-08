@@ -1,9 +1,9 @@
 import { StyleSheet, TouchableOpacity, Image } from 'react-native';
 import React, { useContext } from 'react';
 
-import RouteSetUp from './../Context/routeSetUp';
+import RouteSetUp from '../../Context/routeSetUp';
 
-import * as col from './../Styles/Colours';
+import * as col from '../../Styles/Colours';
 
 // Creates a squared button, with a given image, onPress callback, and a tag.
 // The tag is a string that will be passed to the callback.

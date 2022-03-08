@@ -2,11 +2,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useContext } from 'react';
 
-import RouteContext from '../Context/routeContext';
+import RouteContext from '../../Context/routeContext';
 
-import { headerHeight, windowWidth } from './../Styles/Dimensions';
-import * as col from './../Styles/Colours';
-import { formatRouteInfo } from '../Services/navigationServices';
+import { headerHeight, windowWidth } from './../../Styles/Dimensions';
+import * as col from './../../Styles/Colours';
+import { formatRouteInfo } from '../../Services/navigationServices';
 
 const NavHeader = ({}) => {
   // TODO: Calculate time and distance remaining with the total time, and the offset given by the API.

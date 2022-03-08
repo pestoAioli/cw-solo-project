@@ -2,11 +2,11 @@
 import { StyleSheet, View, Image } from 'react-native';
 import React, { useContext } from 'react';
 
-import turn from './../assets/icons/Nav_turn.png';
-import uTurn from './../assets/icons/Nav_u-turn.png';
-import follow from './../assets/icons/Nav_follow.png';
+import turn from './../../assets/icons/Nav_turn.png';
+import uTurn from './../../assets/icons/Nav_u-turn.png';
+import follow from './../../assets/icons/Nav_follow.png';
 
-import RouteContext from '../Context/routeContext';
+import RouteContext from '../../Context/routeContext';
 import NavRoundabout from './NavRoundabout';
 
 const NavSymbol = ({ style }) => {

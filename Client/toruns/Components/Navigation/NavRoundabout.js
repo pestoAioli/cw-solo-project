@@ -2,10 +2,10 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import React, { useContext } from 'react';
 
-import round from './../assets/icons/Nav_roundabout.png';
-import roundArrow from './../assets/icons/Nav_roundabout-arrow.png';
-import RouteContext from '../Context/routeContext';
-import * as col from './../Styles/Colours';
+import round from './../../assets/icons/Nav_roundabout.png';
+import roundArrow from './../../assets/icons/Nav_roundabout-arrow.png';
+import RouteContext from '../../Context/routeContext';
+import * as col from './../../Styles/Colours';
 
 const NavRoundabout = ({ style }) => {
   const { currentRoute } = useContext(RouteContext);

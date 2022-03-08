@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import LocationsHeader from '../Components/LocationsHeader';
 
 const Profile = () => {
   return (
     <View>
-      <Text>Mooc</Text>
+      <LocationsHeader />
     </View>
   );
 };

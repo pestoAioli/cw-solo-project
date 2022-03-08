@@ -1,4 +1,5 @@
 import Profile from './../Pages/Profile';
+import LocationDetails from './../Components/Location/LocationDetails';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
@@ -11,9 +12,14 @@ export default () => {
       }}
     >
       <Stack.Screen
-        name="Navigation"
+        name="LocationsList"
         component={Profile}
         options={{ title: 'Profile' }}
+      />
+      <Stack.Screen
+        name="Details"
+        component={LocationDetails}
+        options={{ title: 'Details' }}
       />
     </Stack.Navigator>
   );

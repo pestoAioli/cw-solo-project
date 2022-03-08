@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useContext } from 'react';
 
-import * as col from '../Styles/Colours';
-import { windowWidth } from '../Styles/Dimensions';
+import * as col from '../../Styles/Colours';
+import { windowWidth } from '../../Styles/Dimensions';
 
-import RouteContext from '../Context/routeContext';
+import RouteContext from '../../Context/routeContext';
 
 const NavManeuver = () => {
   const { currentRoute } = useContext(RouteContext);

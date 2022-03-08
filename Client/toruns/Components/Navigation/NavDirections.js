@@ -3,17 +3,17 @@ import React, { useContext, useState, useCallback, useEffect } from 'react';
 import * as Location from 'expo-location';
 import { BlurView } from 'expo-blur';
 
-import RouteContext from '../Context/routeContext';
+import RouteContext from '../../Context/routeContext';
 
-import NavText from '../Components/NavText';
-import NavManeuver from '../Components/NavManeuver';
-import NavHeader from './../Components/NavHeader';
-import NavSymbol from '../Components/NavSymbol';
-import NavMap from '../Components/NavMap';
+import NavText from './NavText';
+import NavManeuver from './NavManeuver';
+import NavHeader from './NavHeader';
+import NavSymbol from './NavSymbol';
+import NavMap from './NavMap';
 
-import * as col from './../Styles/Colours';
-import { updateRouteStatus } from '../Services/navigationServices';
-import { tabBarHeight, windowWidth } from '../Styles/Dimensions';
+import * as col from './../../Styles/Colours';
+import { updateRouteStatus } from '../../Services/navigationServices';
+import { tabBarHeight, windowWidth } from '../../Styles/Dimensions';
 
 const NavDirections = () => {
   const { currentRoute, setCurrentRoute } = useContext(RouteContext);
