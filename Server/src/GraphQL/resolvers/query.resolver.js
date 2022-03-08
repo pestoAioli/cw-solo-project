@@ -51,8 +51,7 @@ exports.getDestinationInfo = async (_, args) => {
 exports.getUser = async (_, args) => {
   const id = args.id;
   try {
-    const user = await Users.findById(id).populate('visited_locations').exec();
-    return user;
+    return await Users.findById(id).populate('visited_locations').exec();
   } catch (e) {
     console.error(e);
   }

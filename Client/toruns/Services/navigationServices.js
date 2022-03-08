@@ -3,8 +3,8 @@
 export const initialiseRoute = (data, routeIndex) => {
   const status = 'loaded';
   const arrived = false;
-  const destinationID = data.getRoute.id;
-  const route = data.getRoute.route.routes[routeIndex];
+  const destinationID = data.id;
+  const route = data.route.routes[routeIndex];
   const summary = route.summary;
   const polyline = route.legs[0].points;
   const instructions = route.guidance.instructions;

@@ -13,6 +13,23 @@ export const addVisitedDestination = async (userId, locationId) => {
   return await client.request(mutation, { userId, locationId });
 };
 
+export const getUserInfo = async (id) => {
+  const query = gql`
+    query GetUser($id: String!) {
+      getUser(id: $id) {
+        name
+        email
+        visited_locations {
+          _id
+          name
+        }
+      }
+    }
+  `;
+  const user = await client.request(query, { id });
+  return user.getUser;
+};
+
 export const getBasicDestinationInfo = async (id) => {
   const query = gql`
     query GetDestinationInfo($id: String!) {
@@ -22,7 +39,8 @@ export const getBasicDestinationInfo = async (id) => {
       }
     }
   `;
-  return await client.request(query, { id });
+  const dest = await client.request(query, { id });
+  return dest.getDestinationInfo;
 };
 
 export const getDestinationInfo = async (id) => {
@@ -37,7 +55,8 @@ export const getDestinationInfo = async (id) => {
       }
     }
   `;
-  return await client.request(query, { id });
+  const dest = await client.request(query, { id });
+  return dest.getDestinationInfo;
 };
 
 export const getRoute = async (routeParams) => {
@@ -83,6 +102,6 @@ export const getRoute = async (routeParams) => {
       }
     }
   `;
-
-  return await client.request(query, variables);
+  const route = await client.request(query, variables);
+  return route.getRoute;
 };

@@ -19,9 +19,7 @@ const RouteDetails = () => {
   const [dest, setDest] = useState(null);
 
   useEffect(() => {
-    getBasicDestinationInfo(currentRoute.destinationID).then((resp) =>
-      setDest(resp.getDestinationInfo)
-    );
+    getBasicDestinationInfo(currentRoute.destinationID).then(setDest);
   }, []);
 
   const firstStep = currentRoute.nextInstruction.message
