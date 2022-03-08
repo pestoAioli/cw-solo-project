@@ -58,8 +58,9 @@ const getRandomDestination = async (origin, range, filters) => {
       : true
   );
 
-  const nResults = filteredLocs.length;
-  const idx = nResults > 1 ? Math.floor(Math.random() * (nResults + 1)) : 0;
+  const maxIdx = filteredLocs.length - 1;
+  const idx = maxIdx > 0 ? Math.floor(Math.random() * maxIdx) : 0;
+  console.log(idx, maxIdx);
   return filteredLocs[idx];
 };
 

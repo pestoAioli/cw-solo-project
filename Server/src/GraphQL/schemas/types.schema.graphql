@@ -83,7 +83,6 @@ type location {
 type visitedLocation {
   locationID: String!
   date: String!
-  polilyne: [Point!]!
   origin: Point!
 }
 

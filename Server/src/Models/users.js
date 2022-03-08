@@ -19,7 +19,7 @@ const usersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  locations_visited: [mongoose.Mixed],
+  visited_locations: [String],
 });
 
 module.exports = usersSchema;

@@ -42,7 +42,7 @@ exports.getFakeRoute = async () => {
 exports.getDestinationInfo = async (_, args) => {
   const id = args.id;
   try {
-    return await Locations.findOne({ _id: id }).exec();
+    return await Locations.findById(id).exec();
   } catch (e) {
     console.error(e);
   }
@@ -51,7 +51,7 @@ exports.getDestinationInfo = async (_, args) => {
 exports.getUser = async (_, args) => {
   const id = args.id;
   try {
-    return await Users.findOne({ _id: id }).exec();
+    return await Users.findById(id).exec();
   } catch (e) {
     console.error(e);
   }

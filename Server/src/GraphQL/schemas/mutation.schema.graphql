@@ -3,14 +3,6 @@ input InputPoint {
   longitude: Float!
 }
 
-input destInput {
-  userID: String!
-  locationID: String!
-  date: String!
-  polilyne: [InputPoint!]!
-  origin: InputPoint!
-}
-
 type Mutation {
-  addVisitedDestination(input: destInput!): String!
+  addVisitedDestination(userID: String!, locationID: String!): String!
 }

@@ -2,14 +2,11 @@
 
 const { Users } = require('./../../Models');
 
-exports.addVisitedDestination = (_, { userID, ...location }) => {
+exports.addVisitedDestination = async (_, { userID, locationID }) => {
   try {
-    Users.updateOne(
-      { _id: userID },
-      {
-        $push: { visited_locations: location },
-      }
-    ).exec();
+    const user = await Users.findById(userID).exec();
+    user.visited_locations.addToSet(locationID);
+    await user.save();
     return 'done';
   } catch (e) {
     console.log(e);
