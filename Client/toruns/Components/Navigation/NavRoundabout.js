@@ -54,8 +54,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   rountText: {
-    fontSize: 75,
+    fontSize: 80,
     color: col.highContrast,
+    fontFamily: 'Pridi_400Regular',
   },
   imgRound: {
     width: '140%',

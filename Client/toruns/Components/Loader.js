@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import React from 'react';
 
 import * as col from './../Styles/Colours';
@@ -10,7 +10,7 @@ import o from './../assets/logoLetters/o.png';
 import u from './../assets/logoLetters/u.png';
 import r from './../assets/logoLetters/r.png';
 import n from './../assets/logoLetters/n.png';
-import { headerHeight, windowHeight } from '../Styles/Dimensions';
+import { headerHeight } from '../Styles/Dimensions';
 
 const Loader = () => {
   return (
@@ -20,7 +20,7 @@ const Loader = () => {
         leftRotation="-680deg"
         rightRotation="360deg"
         leftDistance={-500}
-        rightDistance={-300}
+        rightDistance={-500}
         speed={1500}
         size={50}
       />

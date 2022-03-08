@@ -66,11 +66,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: col.lowContrast,
     textAlign: 'center',
+    fontFamily: 'Signika_300Light',
   },
   routeTitleText: {
-    marginVertical: 5,
+    marginVertical: 3,
     fontSize: 22,
     color: col.background,
+    fontFamily: 'Signika_600SemiBold',
   },
   shadow: {
     shadowColor: '#000',

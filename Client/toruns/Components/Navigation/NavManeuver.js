@@ -43,10 +43,11 @@ const styles = StyleSheet.create({
   },
   text: {
     color: col.highContrast,
-    fontSize: 24,
-    fontWeight: '500',
+    fontSize: 28,
     margin: 5,
+    fontWeight: '500',
     textAlign: 'center',
+    fontFamily: 'Signika_500Medium',
   },
   roadNums: {
     flexDirection: 'row',

@@ -15,7 +15,7 @@ const MainHeader = () => {
         style={styles.logo}
         resizeMode={'contain'}
       />
-      <Text style={styles.text}>Where your adventure starts!</Text>
+      <Text style={styles.text}>Where the adventure starts!</Text>
     </View>
   );
 };
@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: col.background,
+    fontFamily: 'Signika_300Light',
+    fontSize: 16,
   },
   logo: {
     height: 50,

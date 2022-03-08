@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import React, { useEffect } from 'react';
+import React from 'react';
 import MapView, { PROVIDER_GOOGLE, Polyline } from 'react-native-maps';
 
 import * as col from './../../Styles/Colours';

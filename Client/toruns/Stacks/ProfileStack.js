@@ -1,7 +1,10 @@
 import Profile from './../Pages/Profile';
 import LocationDetails from './../Components/Location/LocationDetails';
 import { createStackNavigator } from '@react-navigation/stack';
-import { accent } from '../Styles/Colours';
+import { accent, highContrast } from '../Styles/Colours';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 const Stack = createStackNavigator();
 
 export default () => {
@@ -27,7 +30,21 @@ export default () => {
       <Stack.Screen
         name="Details"
         component={LocationDetails}
-        options={{ title: '' }}
+        options={({ navigation }) => ({
+          title: '',
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('LocationsList')}
+            >
+              <MaterialCommunityIcons
+                style={{ marginLeft: 10 }}
+                name="arrow-left"
+                color={highContrast}
+                size={30}
+              />
+            </TouchableOpacity>
+          ),
+        })}
       />
     </Stack.Navigator>
   );

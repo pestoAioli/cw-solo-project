@@ -6,9 +6,8 @@ import { getUserInfo } from '../Services/APIService';
 import Loader from '../Components/Loader';
 import LocationsListItem from '../Components/LocationsListItem';
 import { headerHeight } from '../Styles/Dimensions';
-import TextButton from '../Components/Buttons/TextButton';
 
-const Profile = ({ navigation }) => {
+const Profile = ({ route, navigation }) => {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
@@ -50,11 +49,13 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   title: {
-    fontSize: 40,
+    fontSize: 50,
     color: highContrast,
+    fontFamily: 'Signika_500Medium',
   },
   text: {
-    fontSize: 20,
+    fontSize: 22,
     color: highContrast,
+    fontFamily: 'Signika_300Light',
   },
 });

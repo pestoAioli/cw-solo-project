@@ -38,5 +38,7 @@ const styles = StyleSheet.create({
   text: {
     color: col.highContrast,
     fontSize: 36,
+    marginTop: 20,
+    fontFamily: 'Pridi_400Regular',
   },
 });

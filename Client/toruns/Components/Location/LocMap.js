@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 
 import * as col from '../../Styles/Colours';
 import MapStyle from '../../Styles/MapStyle';
-import { windowHeight, windowWidth } from '../../Styles/Dimensions';
+import { windowHeight } from '../../Styles/Dimensions';
 
 const LocMap = ({ dest }) => {
   const [region] = useState({

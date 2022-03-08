@@ -1,10 +1,6 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React, { useCallback } from 'react';
-import {
-  background,
-  highContrast,
-  highContrastReduced,
-} from '../Styles/Colours';
+import { background, highContrastReduced } from '../Styles/Colours';
 
 const LocationsListItem = ({ navigation, loc }) => {
   const handleClick = useCallback(() => {
@@ -43,6 +39,7 @@ const styles = StyleSheet.create({
   title: {
     color: background,
     paddingHorizontal: 20,
-    fontSize: 19,
+    fontSize: 21,
+    fontFamily: 'Pridi_300Light',
   },
 });

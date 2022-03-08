@@ -9,7 +9,7 @@ const RadiusButton = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Range: {routeParams.range} Km</Text>
+      <Text style={styles.text}>Range: {routeParams.range}Km</Text>
     </View>
   );
 };
@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 15,
+    fontSize: 17,
     color: col.highContrast,
+    fontFamily: 'Signika_300Light',
   },
 });

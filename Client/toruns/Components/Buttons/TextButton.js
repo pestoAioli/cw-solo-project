@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 
 import * as col from '../../Styles/Colours';
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: col.background,
     fontWeight: '400',
+    fontFamily: 'Signika_300Light',
   },
   shadow: {
     shadowColor: '#000',

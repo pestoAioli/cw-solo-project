@@ -79,12 +79,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 36,
     color: col.highContrast,
-    fontWeight: '600',
+    fontFamily: 'Signika_600SemiBold',
+    marginBottom: 5,
   },
   subTitle: {
     textAlign: 'center',
     fontSize: 24,
     color: col.highContrast,
+    fontFamily: 'Signika_300Light',
+    lineHeight: 26,
   },
   buttonsView: {
     flex: 3,

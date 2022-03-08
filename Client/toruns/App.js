@@ -5,6 +5,18 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import * as col from './Styles/Colours';
 import styles from './Styles/AppStyles';
+import {
+  useFonts,
+  Pridi_300Light,
+  Pridi_400Regular,
+  Pridi_500Medium,
+} from '@expo-google-fonts/pridi';
+import {
+  Signika_300Light,
+  Signika_400Regular,
+  Signika_500Medium,
+  Signika_600SemiBold,
+} from '@expo-google-fonts/signika';
 
 import ProfileStack from './Stacks/ProfileStack';
 import Navigation from './Pages/Navigation';
@@ -13,6 +25,7 @@ import RangeSelection from './Pages/RangeSelection';
 import React, { useState } from 'react';
 import RouteSetUp from './Context/routeSetUp';
 import RouteContext from './Context/routeContext';
+import Loader from './Components/Loader';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,11 +37,21 @@ function App() {
     type: '',
   });
   const routeSetUp = { routeParams, setRouteParams };
-
   const [currentRoute, setCurrentRoute] = useState(null);
   const routeCtx = { currentRoute, setCurrentRoute };
-
   const [prefsModal, setPrefsModal] = useState(false);
+
+  const [fontsLoaded] = useFonts({
+    Pridi_300Light,
+    Pridi_400Regular,
+    Pridi_500Medium,
+    Signika_300Light,
+    Signika_400Regular,
+    Signika_500Medium,
+    Signika_600SemiBold,
+  });
+
+  if (!fontsLoaded) return <Loader />;
 
   return (
     <RouteSetUp.Provider value={routeSetUp}>

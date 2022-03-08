@@ -10,15 +10,15 @@ const LocDetailsBody = ({ dest }) => {
       <Text style={styles.sectionTitle}>Stats:</Text>
       <View style={[styles.bodyContainer, styles.shadow]}>
         <Text style={styles.description}>
-          <Text style={{ fontWeight: 'bold' }}>Coordinates: </Text>
+          <Text style={styles.bold}>Coordinates: </Text>
           <Text>{dest.coordinates.join(' , ')}</Text>
         </Text>
         <Text style={styles.description}>
-          <Text style={{ fontWeight: 'bold' }}>Altitude: </Text>
+          <Text style={styles.bold}>Altitude: </Text>
           <Text>{dest.altitude} m</Text>
         </Text>
         <Text style={styles.description}>
-          <Text style={{ fontWeight: 'bold' }}>Tags: </Text>
+          <Text style={styles.bold}>Tags: </Text>
           <Text>{dest.tags.join(' - ')}</Text>
         </Text>
       </View>
@@ -47,12 +47,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 30,
     fontSize: 18,
-    fontWeight: '500',
     color: col.highContrastReduced,
+    fontFamily: 'Signika_600SemiBold',
+  },
+  bold: {
+    fontFamily: 'Signika_600SemiBold',
   },
   description: {
     fontSize: 15,
     color: col.highContrast,
+    fontFamily: 'Signika_300Light',
   },
   shadow: {
     shadowColor: '#000',

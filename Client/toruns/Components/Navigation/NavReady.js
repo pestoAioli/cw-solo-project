@@ -46,9 +46,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   titleText: {
-    fontSize: 36,
+    fontSize: 38,
     color: col.highContrast,
     fontWeight: '500',
+    fontFamily: 'Signika_400Regular',
   },
   shadow: {
     shadowColor: '#000',

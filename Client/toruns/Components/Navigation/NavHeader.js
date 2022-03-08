@@ -63,10 +63,13 @@ const styles = StyleSheet.create({
     color: col.highContrast,
   },
   title: {
-    fontSize: 32,
+    fontSize: 36,
     fontWeight: '600',
+    fontFamily: 'Pridi_500Medium',
+    marginBottom: -10,
   },
   subTitle: {
     fontSize: 18,
+    fontFamily: 'Pridi_300Light',
   },
 });

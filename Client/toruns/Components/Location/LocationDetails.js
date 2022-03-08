@@ -1,21 +1,11 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import MainHeader from '../MainHeader';
 
 import { getDestinationInfo } from '../../Services/APIService';
 import * as col from '../../Styles/Colours';
 import Loader from '../Loader';
-import { headerHeight } from '../../Styles/Dimensions';
 import LocDetailsBody from './LocDetailsBody';
 import LocMap from './LocMap';
-import LocationsHeader from '../LocationsHeader';
 
 const LocationDetails = ({ route, navigation }) => {
   const [dest, setDest] = useState(null);
@@ -23,7 +13,7 @@ const LocationDetails = ({ route, navigation }) => {
   useEffect(() => {
     const { destID } = route.params;
     getDestinationInfo(destID).then(setDest);
-  }, []);
+  }, [route.params]);
 
   return !dest ? (
     <Loader />
@@ -62,19 +52,10 @@ const styles = StyleSheet.create({
   },
   title: {
     color: col.highContrast,
-    fontSize: 36,
+    fontSize: 33,
     paddingVertical: 10,
     paddingHorizontal: 20,
-  },
-  testButton: {
-    position: 'absolute',
-    left: headerHeight / 4,
-    top: headerHeight / 2.5,
-    zIndex: 5,
-  },
-  testButtonText: {
-    fontSize: 30,
-    color: col.highContrast,
+    fontFamily: 'Signika_600SemiBold',
   },
   shadow: {
     shadowColor: '#000',

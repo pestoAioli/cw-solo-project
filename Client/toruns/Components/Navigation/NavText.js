@@ -15,6 +15,8 @@ const NavText = () => {
 
   if (typeof text === 'number') {
     textToShow = text < 1000 ? text + ' m' : (text / 1000).toFixed(2) + ' km';
+  } else {
+    textToShow = textToShow[0].toUpperCase() + textToShow.slice(1);
   }
 
   return (
@@ -44,5 +46,6 @@ const styles = StyleSheet.create({
     color: col.highContrast,
     fontSize: 30,
     fontWeight: '500',
+    fontFamily: 'Signika_500Medium',
   },
 });
