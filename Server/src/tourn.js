@@ -1,12 +1,12 @@
 // @ts-nocheck
 'use strict';
-require('dotenv').config();
+// require('dotenv').config();
 
 const server = require('./GraphQL');
 const { mongoose } = require('./Models');
 
 try {
-  mongoose.connect(process.env.DB_URI, () => {
+  mongoose.connect('mongodb://localhost:27017/legacyproject', () => {
     console.log('Connected to Mongo Atlas! 🍃');
     try {
       server.listen(4000).then(({ url }) => {
