@@ -13,6 +13,7 @@ import NavMap from './NavMap';
 
 import * as col from './../../Styles/Colours';
 import { updateRouteStatus } from '../../Services/navigationServices';
+import { calculateDistance } from '../../Services/locationServices';
 import { tabBarHeight, windowWidth } from '../../Styles/Dimensions';
 
 const NavDirections = () => {
@@ -41,32 +42,32 @@ const NavDirections = () => {
       });
 
       if (currentRoute) {
-        // REAL
-        // const nextLocationAt = Math.round(
-        //   calculateDistance(currentLocation, currentRoute.nextCoords)
-        // );
+        //REAL
+        const nextLocationAt = Math.round(
+          calculateDistance(currentLocation, currentRoute.nextCoords)
+        );
 
         // TESTS INDOOR
-        const nextLocationAt = dist;
+        // const nextLocationAt = dist;
         // BOTH REAL AND TESTS.
         updateRouteStatus(nextLocationAt, currentRoute, setCurrentRoute);
 
         // Only for tests
-        setDist(20);
+        // setDist(20);
       }
     }
-  }, [dist]);
+  }, [currentLocation]);
 
   // Used for testing indoors:
-  const addDistance = useCallback(() => {
-    setDist((curDist) => curDist - 1);
-  }, [dist]);
+  // const addDistance = useCallback(() => {
+  //   setDist((curDist) => curDist - 1);
+  // }, [currentLocation]);
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.testButton} onPress={addDistance}>
+      {/* <TouchableOpacity style={styles.testButton} onPress={addDistance}>
         <Text style={styles.testButtonText}>+</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <NavMap region={region} polyline={currentRoute.polyline} />
       <BlurView intensity={60} style={styles.blurContainer} tint="light">
         <NavHeader />
