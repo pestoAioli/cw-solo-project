@@ -1,7 +1,7 @@
 import { request, gql, GraphQLClient } from 'graphql-request';
 
-const apiURL = 'http://591d5de3-c2fd-431c-9a03-c576683e810a.clouding.host/';
-//const apiURL = 'http://localhost:4000';
+// const apiURL = 'http://591d5de3-c2fd-431c-9a03-c576683e810a.clouding.host/';
+const apiURL = 'http://localhost:4000';
 const client = new GraphQLClient(apiURL);
 
 export const addVisitedDestination = async (userId, locationId) => {
