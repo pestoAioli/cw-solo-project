@@ -1,5 +1,5 @@
-import Profile from './../Pages/Profile';
-import LocationDetails from './../Components/Location/LocationDetails';
+import Profile from '../Pages/Profile';
+import LocationDetails from '../Components/Location/LocationDetails';
 import { createStackNavigator } from '@react-navigation/stack';
 import { accent, highContrast } from '../Styles/Colours';
 import { TouchableOpacity } from 'react-native-gesture-handler';

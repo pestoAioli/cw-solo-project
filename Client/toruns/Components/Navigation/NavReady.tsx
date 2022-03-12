@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useContext, useCallback } from 'react';
 
-import MainHeader from './../MainHeader';
+import MainHeader from '../MainHeader';
 import * as col from '../../Styles/Colours';
 import { headerHeight } from '../../Styles/Dimensions';
 import RouteDetails from './RouteDetails';
 import { updateNextPont } from '../../Services/navigationServices';
 
 import RouteContext from '../../Context/routeContext';
-import TextButton from './../Buttons/TextButton';
+import TextButton from '../Buttons/TextButton';
 
 const NavReady = () => {
   const { currentRoute, setCurrentRoute } = useContext(RouteContext);

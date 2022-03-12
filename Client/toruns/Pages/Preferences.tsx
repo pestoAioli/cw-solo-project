@@ -3,9 +3,9 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, { useContext, useCallback } from 'react';
 import { BlurView } from 'expo-blur';
 
-import * as col from './../Styles/Colours';
-import { windowWidth, windowHeight } from './../Styles/Dimensions';
-import RouteSetUp from './../Context/routeSetUp';
+import * as col from '../Styles/Colours';
+import { windowWidth, windowHeight } from '../Styles/Dimensions';
+import RouteSetUp from '../Context/routeSetUp';
 import CircleButton from '../Components/Buttons/CircleButton';
 import TagButton from '../Components/Buttons/TagButton';
 

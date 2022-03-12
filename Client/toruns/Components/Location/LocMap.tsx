@@ -25,7 +25,7 @@ const LocMap = ({ dest }) => {
         customMapStyle={MapStyle}
         provider={PROVIDER_GOOGLE}
       >
-        <Marker coordinate={region} pinColor={col.accent} tappable={false} />
+        <Marker coordinate={region} pinColor={col.accent} />   {/*removed tappable=false due to overload complaint from ts, unsure if this is necessary */}
       </MapView>
     </View>
   );

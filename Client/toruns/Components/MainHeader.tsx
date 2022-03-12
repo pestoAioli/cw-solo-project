@@ -2,8 +2,8 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-import * as col from './../Styles/Colours';
-import { windowWidth, headerHeight } from './../Styles/Dimensions';
+import * as col from '../Styles/Colours';
+import { windowWidth, headerHeight } from '../Styles/Dimensions';
 import tournLogoGreen from '../assets/tournLogoGreen.png';
 
 // Header with title and subtitle.

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import React, { useContext } from 'react';
 import * as col from '../Styles/Colours';
 
-import RouteSetUp from './../Context/routeSetUp';
+import RouteSetUp from '../Context/routeSetUp';
 
 const RadiusButton = () => {
   const { routeParams } = useContext(RouteSetUp);

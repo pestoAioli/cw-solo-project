@@ -4,8 +4,8 @@ import React, { useContext } from 'react';
 
 import RouteContext from '../../Context/routeContext';
 
-import { headerHeight, windowWidth } from './../../Styles/Dimensions';
-import * as col from './../../Styles/Colours';
+import { headerHeight, windowWidth } from '../../Styles/Dimensions';
+import * as col from '../../Styles/Colours';
 import { formatRouteInfo } from '../../Services/navigationServices';
 
 const NavHeader = ({}) => {

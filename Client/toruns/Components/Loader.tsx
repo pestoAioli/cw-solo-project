@@ -2,7 +2,7 @@
 import { StyleSheet, View } from 'react-native';
 import React from 'react';
 
-import * as col from './../Styles/Colours';
+import * as col from '../Styles/Colours';
 import BouncingPreloader from 'react-native-bouncing-preloaders';
 
 import t from './../assets/logoLetters/t.png';

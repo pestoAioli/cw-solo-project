@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useEffect } from 'react';
 import { BlurView } from 'expo-blur';
 import * as col from '../../Styles/Colours';
 import { windowHeight, windowWidth } from '../../Styles/Dimensions';
-import TextButton from './../Buttons/TextButton';
+import TextButton from '../Buttons/TextButton';
 
 import RouteContext from '../../Context/routeContext';
 import { addVisitedDestination } from '../../Services/APIService';

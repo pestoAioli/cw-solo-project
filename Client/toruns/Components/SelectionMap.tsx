@@ -3,12 +3,12 @@ import { StyleSheet } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Circle } from 'react-native-maps';
 
 import MapStyle from '../Styles/MapStyle';
-import * as col from './../Styles/Colours';
-import { windowWidth, windowHeight } from './../Styles/Dimensions';
+import * as col from '../Styles/Colours';
+import { windowWidth, windowHeight } from '../Styles/Dimensions';
 import { getCurrentLocation } from '../Services/locationServices';
 import Loader from './Loader';
 
-import RouteSetUp from './../Context/routeSetUp';
+import RouteSetUp from '../Context/routeSetUp';
 
 const SelectionMap = () => {
   const [region, setRegion] = useState(null);

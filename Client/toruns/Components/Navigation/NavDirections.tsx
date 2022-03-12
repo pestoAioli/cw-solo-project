@@ -11,7 +11,7 @@ import NavHeader from './NavHeader';
 import NavSymbol from './NavSymbol';
 import NavMap from './NavMap';
 
-import * as col from './../../Styles/Colours';
+import * as col from '../../Styles/Colours';
 import { updateRouteStatus } from '../../Services/navigationServices';
 import { calculateDistance } from '../../Services/locationServices';
 import { tabBarHeight, windowWidth } from '../../Styles/Dimensions';
