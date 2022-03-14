@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "testDebug": "jest -o --watch --coverage=false",
     "dev": "tsc --watch --preserveWatchOutput",
     "start": "node ./src/tourn.js"
   },
@@ -29,5 +30,9 @@
     "mongoose": "^6.2.4",
     "node-fetch": "^2.6.7",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "supertest": "^6.2.2"
   }
 }
