@@ -1,6 +1,7 @@
 // @ts-nocheck
 const mongoose = require("mongoose");
 
+
 const locationsSchema = new mongoose.Schema({
   name: {
     type: String,
