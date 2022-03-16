@@ -7,7 +7,7 @@ import Loader from '../Loader';
 import LocDetailsBody from './LocDetailsBody';
 import LocMap from './LocMap';
 
-const LocationDetails = ({ route, navigation }) => {
+const LocationDetails = ({ route }: any) => {
   const [dest, setDest] = useState(null);
 
   useEffect(() => {

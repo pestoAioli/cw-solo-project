@@ -21,8 +21,6 @@ const NavDirections = () => {
   const [currentLocation, setCurrentLocation] = useState(null);
   const [region, setRegion] = useState(null);
 
-  const [dist, setDist] = useState(31); // Testing indoors
-
   useEffect(() => {
     let subscription: Location.LocationSubscription;
     Location.watchPositionAsync({ distanceInterval: 1 }, (loc) => {
@@ -47,27 +45,17 @@ const NavDirections = () => {
           calculateDistance(currentLocation, currentRoute.nextCoords)
         );
 
-        // TESTS INDOOR
-        // const nextLocationAt = dist;
+    
         // BOTH REAL AND TESTS.
         updateRouteStatus(nextLocationAt, currentRoute, setCurrentRoute);
 
-        // Only for tests
-        // setDist(20);
       }
     }
   }, [currentLocation]);
 
-  // Used for testing indoors:
-  // const addDistance = useCallback(() => {
-  //   setDist((curDist) => curDist - 1);
-  // }, [currentLocation]);
 
   return (
     <View style={styles.container}>
-      {/* <TouchableOpacity style={styles.testButton} onPress={addDistance}>
-        <Text style={styles.testButtonText}>+</Text>
-      </TouchableOpacity> */}
       <NavMap region={region} polyline={currentRoute.polyline} />
       <BlurView intensity={60} style={styles.blurContainer} tint="light">
         <NavHeader />

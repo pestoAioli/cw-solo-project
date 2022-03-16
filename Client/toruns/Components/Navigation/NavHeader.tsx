@@ -9,7 +9,6 @@ import * as col from '../../Styles/Colours';
 import { formatRouteInfo } from '../../Services/navigationServices';
 
 const NavHeader = ({}) => {
-  // TODO: Calculate time and distance remaining with the total time, and the offset given by the API.
 
   const { currentRoute } = useContext(RouteContext);
 

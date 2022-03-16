@@ -6,7 +6,7 @@ import * as col from '../../Styles/Colours';
 import MapStyle from '../../Styles/MapStyle';
 import { windowHeight } from '../../Styles/Dimensions';
 
-const LocMap = ({ dest }) => {
+const LocMap = ({ dest }: any) => {
   const [region] = useState({
     latitude: dest.coordinates[0],
     longitude: dest.coordinates[1],

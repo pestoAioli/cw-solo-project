@@ -3,8 +3,9 @@ import React from 'react';
 
 import * as col from '../../Styles/Colours';
 import { tabBarHeight } from '../../Styles/Dimensions';
+import { LatLng } from 'react-native-maps';
 
-const LocDetailsBody = ({ dest }) => {
+const LocDetailsBody = ({ dest }: any) => {
   return (
     <View style={{ paddingBottom: tabBarHeight }}>
       <Text style={styles.sectionTitle}>Stats:</Text>
