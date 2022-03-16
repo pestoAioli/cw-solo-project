@@ -1,8 +1,19 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React, { useCallback } from 'react';
 import { background, highContrastReduced } from '../Styles/Colours';
+import { NavigationContainerProps } from '@react-navigation/native';
 
-const LocationsListItem = ({ navigation, loc }) => {
+interface LocationsListItemProps {
+  navigation: {
+    [key: string]: Function;
+  };
+  loc: {
+    _id: string;
+    name: string;
+  };
+}
+
+const LocationsListItem = ({ navigation, loc }: LocationsListItemProps) => {
   const handleClick = useCallback(() => {
     navigation.navigate('Profile', {
       screen: 'Details',

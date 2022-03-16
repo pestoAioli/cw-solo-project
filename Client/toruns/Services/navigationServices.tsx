@@ -1,6 +1,9 @@
 // Initialises a route with the data given by the server.
-// TODO: Move this logic to the server instead ??
-export const initialiseRoute = (data, routeIndex) => {
+// TODO: Move this logic to the server instead ?
+export const initialiseRoute = (
+  data: { [key: string]: any },
+  routeIndex: number
+) => {
   const status = 'loaded';
   const arrived = false;
   const destinationID = data.id;
@@ -31,9 +34,13 @@ export const initialiseRoute = (data, routeIndex) => {
 //         -> Approaching: Between 500m and 2km.
 //         -> Maneuver: Less than 500m.
 // When it is at less than 30m, it triggers the next point.
-export const updateRouteStatus = (nextloc, route, setRoute) => {
+export const updateRouteStatus = (
+  nextloc: number,
+  route: { [key: string | number]: any },
+  setRoute: Function
+) => {
   let status = 'follow';
-  let statusText = 'Continue...';
+  let statusText: string | number = 'Continue...';
 
   if (nextloc < 20) {
     updateNextPont(route.nextIndex + 1, route, setRoute);
@@ -51,7 +58,7 @@ export const updateRouteStatus = (nextloc, route, setRoute) => {
     statusText = nextloc;
   }
 
-  setRoute((lastRoute) => ({
+  setRoute((lastRoute: object) => ({
     ...lastRoute,
     statusText,
     status,
@@ -61,14 +68,18 @@ export const updateRouteStatus = (nextloc, route, setRoute) => {
 // Function triggered when a new instruction point is reached.
 // If there are more intructions, it sets the next one.
 // Otherwise, it changes the status to 'Arrived'
-export const updateNextPont = (pointIndex, route, setRoute) => {
+export const updateNextPont = (
+  pointIndex: number,
+  route: { [key: string | number]: any },
+  setRoute: Function
+) => {
   if (pointIndex >= route.instructions.length) {
-    setRoute((route) => ({
+    setRoute((route: any) => ({
       ...route,
       arrived: true,
     }));
   } else {
-    setRoute((route) => ({
+    setRoute((route: any) => ({
       ...route,
       nextIndex: pointIndex,
       nextCoords: route.instructions[pointIndex].point,
@@ -77,7 +88,7 @@ export const updateNextPont = (pointIndex, route, setRoute) => {
   }
 };
 
-export const formatRouteInfo = (seconds, meters) => {
+export const formatRouteInfo = (seconds: number, meters: number) => {
   const formattedInfo = { time: '', distance: `${meters}m` };
   if (meters > 1000) formattedInfo.distance = `${(meters / 1000).toFixed(2)}Km`;
 

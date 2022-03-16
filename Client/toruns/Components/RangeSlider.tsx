@@ -17,7 +17,7 @@ const RangeSlider = () => {
 
   const handleSliderChange = useCallback(
     (val) => {
-      setRouteParams((prefs) => ({ ...prefs, range: val / 1000 }));
+      setRouteParams((prefs: object) => ({ ...prefs, range: val / 1000 }));
     },
     [routeParams.range]
   );

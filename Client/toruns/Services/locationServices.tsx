@@ -13,7 +13,10 @@ export const getCurrentLocation = async () => {
   return loc;
 };
 
-export const calculateDistance = (loc, nextPoint) => {
+export const calculateDistance = (
+  loc: { [key: string]: number },
+  nextPoint: { latitude: number; longitude: number }
+) => {
   var radlat1 = (Math.PI * loc.latitude) / 180;
   var radlat2 = (Math.PI * nextPoint.latitude) / 180;
   var theta = loc.longitude - nextPoint.longitude;

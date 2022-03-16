@@ -4,7 +4,10 @@ import { request, gql, GraphQLClient } from 'graphql-request';
 const apiURL = 'http://localhost:4000';
 const client = new GraphQLClient(apiURL);
 
-export const addVisitedDestination = async (userId, locationId) => {
+export const addVisitedDestination = async (
+  userId: string,
+  locationId: string
+) => {
   const mutation = gql`
     mutation Mutation($userId: String!, $locationId: String!) {
       addVisitedDestination(userID: $userId, locationID: $locationId)
@@ -13,7 +16,7 @@ export const addVisitedDestination = async (userId, locationId) => {
   return await client.request(mutation, { userId, locationId });
 };
 
-export const getUserInfo = async (id) => {
+export const getUserInfo = async (id: string) => {
   const query = gql`
     query GetUser($id: String!) {
       getUser(id: $id) {
@@ -30,7 +33,7 @@ export const getUserInfo = async (id) => {
   return user.getUser;
 };
 
-export const getBasicDestinationInfo = async (id) => {
+export const getBasicDestinationInfo = async (id: string) => {
   const query = gql`
     query GetDestinationInfo($id: String!) {
       getDestinationInfo(id: $id) {
@@ -43,7 +46,7 @@ export const getBasicDestinationInfo = async (id) => {
   return dest.getDestinationInfo;
 };
 
-export const getDestinationInfo = async (id) => {
+export const getDestinationInfo = async (id: string) => {
   const query = gql`
     query GetDestinationInfo($id: String!) {
       getDestinationInfo(id: $id) {
@@ -59,7 +62,7 @@ export const getDestinationInfo = async (id) => {
   return dest.getDestinationInfo;
 };
 
-export const getRoute = async (routeParams) => {
+export const getRoute = async (routeParams: object) => {
   const variables = { input: routeParams };
 
   const query = gql`

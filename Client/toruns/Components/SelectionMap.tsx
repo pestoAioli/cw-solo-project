@@ -19,7 +19,7 @@ const SelectionMap = () => {
   // Uses tsid value to set the map center, and the route origin.
   useEffect(() => {
     getCurrentLocation().then((loc) => {
-      setRouteParams((params) => ({
+      setRouteParams((params: object) => ({
         ...params,
         origin: [loc.coords.latitude, loc.coords.longitude],
       }));
