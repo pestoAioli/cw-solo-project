@@ -8,7 +8,9 @@ import LocationsListItem from '../Components/LocationsListItem';
 import { headerHeight } from '../Styles/Dimensions';
 
 interface ProfileProps {
-navigation: Object
+navigation: {       
+  [key: string]: Function
+}
 }
 
 const Profile = ({ navigation }: ProfileProps) => {

@@ -7,6 +7,8 @@ import TextButton from '../Buttons/TextButton';
 
 import RouteContext from '../../Context/routeContext';
 import { addVisitedDestination } from '../../Services/APIService';
+
+
 interface NavArrivedProps {
   navigation: {
     [key: string]: Function;

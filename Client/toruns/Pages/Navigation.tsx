@@ -13,7 +13,9 @@ import NavArrived from '../Components/Navigation/NavArrived';
 import NavDirections from '../Components/Navigation/NavDirections';
 
 interface NavigationProps {
-  navigation: NavigationProp<any,any>
+  navigation: {
+    [key: string]: Function
+  }
 }
 const Navigation = ({ navigation }: NavigationProps) => {
   const { routeParams } = useContext(RouteSetUpContext);
