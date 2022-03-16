@@ -17,8 +17,11 @@ import mountain from './../assets/icons/mountain.png';
 import restaurant from './../assets/icons/restaurant.png';
 import historical from './../assets/icons/moai.png';
 import RadiusButton from '../Components/RadiusButton';
-
-const Preferences = ({ setPrefsModal, navigation }) => {
+interface PreferencesProps {
+  setPrefsModal: Function
+  navigation: Object
+}
+const Preferences = ({ setPrefsModal, navigation }: PreferencesProps) => {
   const { routeParams, setRouteParams } = useContext(RouteSetUp);
 
   const tags = { mountain, beach, historical, restaurant };

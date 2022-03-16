@@ -12,10 +12,9 @@ import TextButton from '../Buttons/TextButton';
 
 const NavReady = () => {
   const { currentRoute, setCurrentRoute } = useContext(RouteContext);
-
   const handleClick = useCallback(() => {
     updateNextPont(1, currentRoute, setCurrentRoute);
-    setCurrentRoute((route) => ({ ...route, status: 'follow' }));
+    setCurrentRoute((route: any) => ({ ...route, status: 'follow' }));
   }, []);
 
   return (

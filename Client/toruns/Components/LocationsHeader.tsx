@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
 import * as col from '../Styles/Colours';

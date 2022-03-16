@@ -1,6 +1,6 @@
 import React, { useContext, useCallback } from 'react';
 import { getRoute } from '../Services/APIService';
-import { useFocusEffect } from '@react-navigation/native';
+import { NavigationContainerProps, NavigationProp, useFocusEffect } from '@react-navigation/native';
 
 import { StyleSheet, View, Modal } from 'react-native';
 import RouteSetUpContext from '../Context/routeSetUp';
@@ -12,7 +12,10 @@ import { initialiseRoute } from '../Services/navigationServices';
 import NavArrived from '../Components/Navigation/NavArrived';
 import NavDirections from '../Components/Navigation/NavDirections';
 
-const Navigation = ({ navigation }) => {
+interface NavigationProps {
+  navigation: NavigationProp<any,any>
+}
+const Navigation = ({ navigation }: NavigationProps) => {
   const { routeParams } = useContext(RouteSetUpContext);
   const { currentRoute, setCurrentRoute } = useContext(RouteContext);
 

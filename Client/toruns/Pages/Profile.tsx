@@ -7,7 +7,11 @@ import Loader from '../Components/Loader';
 import LocationsListItem from '../Components/LocationsListItem';
 import { headerHeight } from '../Styles/Dimensions';
 
-const Profile = ({ route, navigation }) => {
+interface ProfileProps {
+navigation: Object
+}
+
+const Profile = ({ navigation }: ProfileProps) => {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
