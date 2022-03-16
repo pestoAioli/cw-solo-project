@@ -7,8 +7,12 @@ import TextButton from '../Buttons/TextButton';
 
 import RouteContext from '../../Context/routeContext';
 import { addVisitedDestination } from '../../Services/APIService';
-
-const NavArrived = ({ navigation }) => {
+interface NavArrivedProps {
+  navigation: {
+    [key: string]: Function;
+  };
+}
+const NavArrived = ({ navigation }: NavArrivedProps) => {
   const { currentRoute, setCurrentRoute } = useContext(RouteContext);
 
   useEffect(() => {

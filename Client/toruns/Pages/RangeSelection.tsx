@@ -8,8 +8,12 @@ import Preferences from './Preferences';
 import RadiusButton from '../Components/RadiusButton';
 
 import * as dim from '../Styles/Dimensions';
-
-const RangeSelection = ({ prefsModal, setPrefsModal, navigation }) => {
+interface RangeSelectionProps {
+  prefsModal: boolean,
+  setPrefsModal: Function,
+  navigation: Object
+}
+const RangeSelection = ({ prefsModal, setPrefsModal, navigation }: RangeSelectionProps) => {
   return (
     <View style={styles.container}>
       <Modal animationType="slide" transparent={true} visible={prefsModal}>

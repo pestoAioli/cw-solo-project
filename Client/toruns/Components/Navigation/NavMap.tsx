@@ -1,12 +1,22 @@
 import { StyleSheet } from 'react-native';
 import React from 'react';
-import MapView, { PROVIDER_GOOGLE, Polyline } from 'react-native-maps';
+import MapView, {
+  PROVIDER_GOOGLE,
+  Polyline,
+  LatLng,
+  Region,
+} from 'react-native-maps';
 
 import * as col from '../../Styles/Colours';
 import { windowHeight, windowWidth } from '../../Styles/Dimensions';
 import NavMapStyle from '../../Styles/NavMapStyle';
 
-const NavMap = ({ region, polyline }) => {
+interface NavMapProps {
+  region: Region;
+  polyline: LatLng[];
+}
+
+const NavMap = ({ region, polyline }: NavMapProps) => {
   return (
     <MapView
       style={styles.map}

@@ -24,7 +24,7 @@ const NavDirections = () => {
   const [dist, setDist] = useState(31); // Testing indoors
 
   useEffect(() => {
-    let subscription;
+    let subscription: Location.LocationSubscription;
     Location.watchPositionAsync({ distanceInterval: 1 }, (loc) => {
       setCurrentLocation(loc.coords);
     }).then((res) => (subscription = res));
