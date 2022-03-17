@@ -3,7 +3,6 @@ import React from 'react';
 
 import * as col from '../../Styles/Colours';
 import { tabBarHeight } from '../../Styles/Dimensions';
-import { LatLng } from 'react-native-maps';
 
 const LocDetailsBody = ({ dest }: any) => {
   return (

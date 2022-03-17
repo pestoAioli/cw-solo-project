@@ -20,7 +20,6 @@ const NavDirections = () => {
   const { currentRoute, setCurrentRoute } = useContext(RouteContext);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [region, setRegion] = useState(null);
-
   useEffect(() => {
     let subscription: Location.LocationSubscription;
     Location.watchPositionAsync({ distanceInterval: 1 }, (loc) => {

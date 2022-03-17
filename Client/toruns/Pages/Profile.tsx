@@ -12,7 +12,6 @@ navigation: {
   [key: string]: Function
 }
 }
-
 const Profile = ({ navigation }: ProfileProps) => {
   const [userInfo, setUserInfo] = useState(null);
 

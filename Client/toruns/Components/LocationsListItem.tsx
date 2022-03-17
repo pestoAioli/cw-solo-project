@@ -1,7 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React, { useCallback } from 'react';
 import { background, highContrastReduced } from '../Styles/Colours';
-import { NavigationContainerProps } from '@react-navigation/native';
 
 interface LocationsListItemProps {
   navigation: {

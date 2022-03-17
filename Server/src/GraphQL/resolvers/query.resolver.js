@@ -4,9 +4,9 @@ const fetch = require('node-fetch');
 const {
   getTomTomURL,
   getRandomDestination,
-} = require('./../../Helpers/routes');
+} = require('../../Helpers/routes');
 
-const { Locations, Users } = require('./../../Models');
+const { Locations, Users } = require('../../Models');
 
 exports.getRoute = async (_, args) => {
   const { origin, range, filters, type } = args.input;

@@ -1,6 +1,6 @@
 'use strict';
 
-const { Users } = require('./../../Models');
+const { Users } = require('../../Models');
 
 exports.addVisitedDestination = async (_, { userID, locationID }) => {
   try {

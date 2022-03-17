@@ -21,8 +21,19 @@ interface PreferencesProps {
   setPrefsModal: Function
   navigation: Object
 }
+interface RouteSetUp {
+  Consumer: Object,
+  Provider: Object,
+    routeParams: {
+      filters: [],
+      origin: Array<Number>,
+      range: number,
+      type: string,
+    },
+    setRouteParams: [Function],
+}
 const Preferences = ({ setPrefsModal, navigation }: PreferencesProps) => {
-  const { routeParams, setRouteParams } = useContext(RouteSetUp);
+  const { routeParams, setRouteParams } = useContext<RouteSetUp>(RouteSetUp);
 
   const tags = { mountain, beach, historical, restaurant };
   const types = { fastest, thrilling };

@@ -17,9 +17,28 @@ interface NavigationProps {
     [key: string]: Function
   }
 }
+
+interface RouteSetUp {
+    Consumer: Object,
+    Provider: Object,
+      routeParams: {
+        filters: [],
+        origin: Array<Number>,
+        range: number,
+        type: string,
+      },
+      setRouteParams: [Function],
+  }
+  interface Route {
+    Consumer: Object,
+    Provider: Object,
+    currentRoute: any,
+    setCurrentRoute: Function,
+    setRouteParams: [Function],
+  }
 const Navigation = ({ navigation }: NavigationProps) => {
-  const { routeParams } = useContext(RouteSetUpContext);
-  const { currentRoute, setCurrentRoute } = useContext(RouteContext);
+  const { routeParams } = useContext<RouteSetUp>(RouteSetUpContext) ;
+  const { currentRoute, setCurrentRoute } = useContext<Route>(RouteContext);
 
   // Called when the screen is focused.
   // If there isn't a current route running, it sets a new one.
